@@ -6,8 +6,12 @@
 //  Copyright © 2016 Michael Kupchick. All rights reserved.
 //
 
-#ifndef MatchingStrategy_h
-#define MatchingStrategy_h
+#import <Foundation/Foundation.h>
+#import "Card.h"
 
+@protocol MatchingStrategy <NSObject>
 
-#endif /* MatchingStrategy_h */
+- (NSInteger)matchCard:(Card *) card withOthers:(NSArray *)otherCards returnInvolved:(NSMutableArray *) involved;
+
+@end
+
