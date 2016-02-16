@@ -7,7 +7,29 @@
 //
 
 #import <Foundation/Foundation.h>
+#import <UIKit/UIKit.h>
+#import "Card.h"
 
-@interface SetCard : NSObject
+
+typedef enum setCardShadings
+{
+  SHADING_SOLID,
+  SHADING_STRIPED,
+  SHADING_OPEN,
+  SHADING_MAX
+} SetCardShading;
+
+@interface SetCard : Card
+
++(NSUInteger) maxRank;
++(NSArray *) validSymbols;
++(NSArray *) validColors;
+
+- (instancetype) initWithOther:(SetCard *) other;
+
+@property (nonatomic) SetCardShading shading;
+@property (nonatomic, strong) UIColor* color;
+@property (nonatomic, strong) NSString* symbol;
+@property (nonatomic) NSUInteger rank;
 
 @end

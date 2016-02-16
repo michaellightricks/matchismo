@@ -12,7 +12,7 @@
 @interface GameTurn : NSObject
 
 @property (nonatomic, strong) NSMutableArray* choosenCards;
-
+@property (nonatomic) NSInteger scoreDelta;
 @end
 
 @implementation GameTurn
@@ -31,15 +31,17 @@
 
 @property (nonatomic, strong) NSMutableArray *cards;
 @property (nonatomic, readwrite) NSInteger score;
+@property (nonatomic, strong) NSMutableArray* turns;
 @property (nonatomic, strong) id <MatchingStrategy> matchingStrategy;
-@property NSMutableArray* turns;
+
 @end
 
 @implementation CardMatchingGame
 
 static const int COST_TO_CHOSE = 1;
 
-- (NSMutableArray *) turns {
+
+- (NSMutableArray *)turns {
   if (!_turns) {
     _turns = [[NSMutableArray alloc] init];
   }
@@ -47,8 +49,7 @@ static const int COST_TO_CHOSE = 1;
   return _turns;
 }
 
-- (NSMutableArray *) cards
-{
+- (NSMutableArray *)cards {
   if (!_cards) {
     _cards = [[NSMutableArray alloc] init];
   }
@@ -56,15 +57,20 @@ static const int COST_TO_CHOSE = 1;
   return _cards;
 }
 
-- (instancetype)initWithCardCount:(NSUInteger)count
-                        usingDeck:(Deck *) deck
-                 andMatchStrategy:(id <MatchingStrategy>) strategy {
+- (id <MatchingStrategy>)matchingStrategy {
+  if (!_matchingStrategy) {
+    _matchingStrategy = [self createMatchingStrategy];
+  }
+  return _matchingStrategy;
+}
+
+- (instancetype)initWithCardCount:(NSUInteger)count {
   self = [super init];
   
   if (self) {
     _started = NO;
-    _matchingStrategy = strategy;
     _status = @"New game";
+    Deck *deck = [self createDeck];
     for (int i = 0; i < count; ++i) {
       Card *card = [deck drawRandomCard];
       if (card)  {
@@ -81,33 +87,43 @@ static const int COST_TO_CHOSE = 1;
   return self;
 }
 
-- (void)chooseCardAtIndex:(NSUInteger)index
-{
+- (Deck *)createDeck {
+  assert(0);
+  return nil;
+}
+
+-(id <MatchingStrategy>)createMatchingStrategy {
+  assert(0);
+  return nil;
+}
+
+- (void)chooseCardAtIndex:(NSUInteger)index {
   _started = YES;
   Card *card = [self cardAtIndex:index];
   
+  if (card.isMatched || card.isChosen) {
+    return;
+  }
+
   GameTurn* turn = [[GameTurn alloc] init];
   
-  if (!card.isMatched) {
-    if (!card.isChosen) {
-      
-      NSMutableArray *involved = [[NSMutableArray alloc] init];
-      
-      GameTurn *turn = [[GameTurn alloc] init];
-
-      self.score += [self.matchingStrategy matchCard:card withOthers:self.cards returnInvolved:involved];
-      
-      for (Card *involvedCard in involved) {
-        [turn.choosenCards addObject:[involvedCard clone]];
-      }
-      
-      [self.turns addObject:turn];
-      [self updateStatus:turn];
-      
-      self.score -= COST_TO_CHOSE;
-      card.chosen = YES;
+  card.chosen = YES;
+  
+  for (Card * card in self.cards) {
+    if (card.isChosen && !card.isMatched) {
+      [turn.choosenCards addObject:card];
     }
   }
+  
+  turn.scoreDelta = [self.matchingStrategy matchCards:turn.choosenCards];
+  turn.scoreDelta -= COST_TO_CHOSE;
+  
+  card.chosen = YES;
+  
+  self.score += turn.scoreDelta;
+  
+  [self.turns addObject:turn];
+  [self updateStatus:turn];
 }
 
 - (void)updateStatus:(GameTurn *) turn {
@@ -122,10 +138,10 @@ static const int COST_TO_CHOSE = 1;
   }
  
   if (isMatched) {
-    self.status = [NSString stringWithFormat:@"%@are match", cardsString];
+    self.status = [NSString stringWithFormat:@"%@are match added %ld points", cardsString, (long)turn.scoreDelta];
   }
   else {
-    self.status = cardsString;
+    self.status = [NSString stringWithFormat:@"%@ penalty %ld points", cardsString, (long)turn.scoreDelta];
   }
 }
 

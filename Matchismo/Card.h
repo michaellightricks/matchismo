@@ -10,14 +10,14 @@
 
 @interface Card : NSObject
 
-@property (nonatomic) NSString* contents;
+@property (nonatomic) NSString *contents;
 @property (nonatomic, getter=isChosen) BOOL chosen;
 @property (nonatomic, getter=isMatched) BOOL matched;
 
-- (Card *) clone;
+- (Card *)clone;
 
-- (instancetype) initWithOther:(Card *) card;
+- (instancetype)initWithOther:(Card *)card;
 
-- (int)match:(NSArray *)otherCards;
+//- (int)match:(NSArray *)otherCards;
 
 @end

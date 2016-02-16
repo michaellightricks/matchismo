@@ -33,19 +33,4 @@
   return result;
 }
 
-
-- (int)match:(NSArray *)otherCards
-{
-  int score = 1;
-  for (Card *c in otherCards)
-  {
-    if ([c.contents isEqualToString:c.contents])
-    {
-      score = 1;
-    }
-  }
-  
-  return score;
-}
-
 @end

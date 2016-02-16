@@ -16,6 +16,6 @@
 
 - (instancetype) initWithMin:(NSUInteger) minCardsToMatch max:(NSUInteger) maxCardsToMatch;
 
-- (NSInteger)matchCard:(Card *) card withOthers:(NSArray *)otherCards returnInvolved:(NSMutableArray *) involved;
+- (NSInteger)matchCards:(NSArray *)cards;
 
 @end

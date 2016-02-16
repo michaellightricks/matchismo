@@ -13,12 +13,17 @@
 
 @interface CardMatchingGame : NSObject
 
-- (instancetype)initWithCardCount:(NSUInteger)count
-                         usingDeck:(Deck *) deck
-                  andMatchStrategy:(id <MatchingStrategy>) strategy;
+- (instancetype)initWithCardCount:(NSUInteger)count;
 
 - (void)chooseCardAtIndex:(NSUInteger)index;
 - (Card *)cardAtIndex:(NSUInteger)index;
+
+// protected abstract start
+
+- (Deck *)createDeck;
+- (id <MatchingStrategy>)createMatchingStrategy;
+
+// protected abstract end
 
 @property (strong, nonatomic) NSString *status;
 @property (readonly) BOOL started;

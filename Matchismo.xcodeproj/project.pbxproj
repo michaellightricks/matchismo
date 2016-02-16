@@ -17,8 +17,13 @@
 		6406E1F11C6B3D1F003762B2 /* Deck.m in Sources */ = {isa = PBXBuildFile; fileRef = 6406E1F01C6B3D1F003762B2 /* Deck.m */; };
 		6406E1F41C6B41DF003762B2 /* PlayingCard.m in Sources */ = {isa = PBXBuildFile; fileRef = 6406E1F31C6B41DF003762B2 /* PlayingCard.m */; };
 		6406E1F71C6B4A12003762B2 /* PlayingCardDeck.m in Sources */ = {isa = PBXBuildFile; fileRef = 6406E1F61C6B4A12003762B2 /* PlayingCardDeck.m */; };
+		647A5B8A1C722D9100CB6C14 /* SetMatchingStrategy.m in Sources */ = {isa = PBXBuildFile; fileRef = 647A5B891C722D9100CB6C14 /* SetMatchingStrategy.m */; };
+		647A5B8D1C72333400CB6C14 /* PlayingCardMatchingGame.m in Sources */ = {isa = PBXBuildFile; fileRef = 647A5B8C1C72333400CB6C14 /* PlayingCardMatchingGame.m */; };
+		647A5B901C73140D00CB6C14 /* SetMatchingGame.m in Sources */ = {isa = PBXBuildFile; fileRef = 647A5B8F1C73140D00CB6C14 /* SetMatchingGame.m */; };
 		648CBCF31C6B68B200F4A9A1 /* CardMatchingGame.m in Sources */ = {isa = PBXBuildFile; fileRef = 648CBCF21C6B68B200F4A9A1 /* CardMatchingGame.m */; };
 		648CBCFA1C6C898D00F4A9A1 /* MinMaxMatchingStrategy.m in Sources */ = {isa = PBXBuildFile; fileRef = 648CBCF91C6C898D00F4A9A1 /* MinMaxMatchingStrategy.m */; };
+		64DCB4701C7206B100AA116C /* SetCard.m in Sources */ = {isa = PBXBuildFile; fileRef = 64DCB46F1C7206B100AA116C /* SetCard.m */; };
+		64DCB4731C7206C100AA116C /* SetDeck.m in Sources */ = {isa = PBXBuildFile; fileRef = 64DCB4721C7206C100AA116C /* SetDeck.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -40,11 +45,21 @@
 		6406E1F31C6B41DF003762B2 /* PlayingCard.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlayingCard.m; sourceTree = "<group>"; };
 		6406E1F51C6B4A12003762B2 /* PlayingCardDeck.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlayingCardDeck.h; sourceTree = "<group>"; };
 		6406E1F61C6B4A12003762B2 /* PlayingCardDeck.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlayingCardDeck.m; sourceTree = "<group>"; };
+		647A5B881C722D9100CB6C14 /* SetMatchingStrategy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SetMatchingStrategy.h; sourceTree = "<group>"; };
+		647A5B891C722D9100CB6C14 /* SetMatchingStrategy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SetMatchingStrategy.m; sourceTree = "<group>"; };
+		647A5B8B1C72333400CB6C14 /* PlayingCardMatchingGame.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlayingCardMatchingGame.h; sourceTree = "<group>"; };
+		647A5B8C1C72333400CB6C14 /* PlayingCardMatchingGame.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlayingCardMatchingGame.m; sourceTree = "<group>"; };
+		647A5B8E1C73140D00CB6C14 /* SetMatchingGame.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SetMatchingGame.h; sourceTree = "<group>"; };
+		647A5B8F1C73140D00CB6C14 /* SetMatchingGame.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SetMatchingGame.m; sourceTree = "<group>"; };
 		648CBCF11C6B68B200F4A9A1 /* CardMatchingGame.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CardMatchingGame.h; sourceTree = "<group>"; };
 		648CBCF21C6B68B200F4A9A1 /* CardMatchingGame.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CardMatchingGame.m; sourceTree = "<group>"; };
 		648CBCF71C6C88A000F4A9A1 /* MatchingStrategy.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MatchingStrategy.h; sourceTree = "<group>"; };
 		648CBCF81C6C898D00F4A9A1 /* MinMaxMatchingStrategy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MinMaxMatchingStrategy.h; path = ../MinMaxMatchingStrategy.h; sourceTree = "<group>"; };
 		648CBCF91C6C898D00F4A9A1 /* MinMaxMatchingStrategy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MinMaxMatchingStrategy.m; path = ../MinMaxMatchingStrategy.m; sourceTree = "<group>"; };
+		64DCB46E1C7206B100AA116C /* SetCard.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SetCard.h; sourceTree = "<group>"; };
+		64DCB46F1C7206B100AA116C /* SetCard.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SetCard.m; sourceTree = "<group>"; };
+		64DCB4711C7206C100AA116C /* SetDeck.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SetDeck.h; sourceTree = "<group>"; };
+		64DCB4721C7206C100AA116C /* SetDeck.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SetDeck.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -102,21 +117,47 @@
 		648CBCF51C6B68E600F4A9A1 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				648CBCF81C6C898D00F4A9A1 /* MinMaxMatchingStrategy.h */,
-				648CBCF91C6C898D00F4A9A1 /* MinMaxMatchingStrategy.m */,
 				6406E1EF1C6B3D1F003762B2 /* Deck.h */,
 				6406E1F01C6B3D1F003762B2 /* Deck.m */,
 				6406E1EC1C6B3281003762B2 /* Card.h */,
 				6406E1ED1C6B3281003762B2 /* Card.m */,
-				6406E1F21C6B41DF003762B2 /* PlayingCard.h */,
-				6406E1F31C6B41DF003762B2 /* PlayingCard.m */,
-				6406E1F51C6B4A12003762B2 /* PlayingCardDeck.h */,
-				6406E1F61C6B4A12003762B2 /* PlayingCardDeck.m */,
+				64DCB46D1C72068100AA116C /* SetCards */,
+				64DCB46C1C72065D00AA116C /* PlayingCards */,
 				648CBCF11C6B68B200F4A9A1 /* CardMatchingGame.h */,
 				648CBCF21C6B68B200F4A9A1 /* CardMatchingGame.m */,
 				648CBCF71C6C88A000F4A9A1 /* MatchingStrategy.h */,
 			);
 			name = Model;
+			sourceTree = "<group>";
+		};
+		64DCB46C1C72065D00AA116C /* PlayingCards */ = {
+			isa = PBXGroup;
+			children = (
+				648CBCF81C6C898D00F4A9A1 /* MinMaxMatchingStrategy.h */,
+				648CBCF91C6C898D00F4A9A1 /* MinMaxMatchingStrategy.m */,
+				6406E1F21C6B41DF003762B2 /* PlayingCard.h */,
+				6406E1F31C6B41DF003762B2 /* PlayingCard.m */,
+				6406E1F51C6B4A12003762B2 /* PlayingCardDeck.h */,
+				6406E1F61C6B4A12003762B2 /* PlayingCardDeck.m */,
+				647A5B8B1C72333400CB6C14 /* PlayingCardMatchingGame.h */,
+				647A5B8C1C72333400CB6C14 /* PlayingCardMatchingGame.m */,
+			);
+			name = PlayingCards;
+			sourceTree = "<group>";
+		};
+		64DCB46D1C72068100AA116C /* SetCards */ = {
+			isa = PBXGroup;
+			children = (
+				64DCB46E1C7206B100AA116C /* SetCard.h */,
+				64DCB46F1C7206B100AA116C /* SetCard.m */,
+				64DCB4711C7206C100AA116C /* SetDeck.h */,
+				64DCB4721C7206C100AA116C /* SetDeck.m */,
+				647A5B881C722D9100CB6C14 /* SetMatchingStrategy.h */,
+				647A5B891C722D9100CB6C14 /* SetMatchingStrategy.m */,
+				647A5B8E1C73140D00CB6C14 /* SetMatchingGame.h */,
+				647A5B8F1C73140D00CB6C14 /* SetMatchingGame.m */,
+			);
+			name = SetCards;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -190,14 +231,19 @@
 			buildActionMask = 2147483647;
 			files = (
 				648CBCFA1C6C898D00F4A9A1 /* MinMaxMatchingStrategy.m in Sources */,
+				647A5B901C73140D00CB6C14 /* SetMatchingGame.m in Sources */,
+				647A5B8A1C722D9100CB6C14 /* SetMatchingStrategy.m in Sources */,
 				6406E1F41C6B41DF003762B2 /* PlayingCard.m in Sources */,
 				6406E1F11C6B3D1F003762B2 /* Deck.m in Sources */,
 				6406E1DB1C6A4AEF003762B2 /* ViewController.m in Sources */,
+				647A5B8D1C72333400CB6C14 /* PlayingCardMatchingGame.m in Sources */,
+				64DCB4701C7206B100AA116C /* SetCard.m in Sources */,
 				6406E1D81C6A4AEF003762B2 /* AppDelegate.m in Sources */,
 				648CBCF31C6B68B200F4A9A1 /* CardMatchingGame.m in Sources */,
 				6406E1F71C6B4A12003762B2 /* PlayingCardDeck.m in Sources */,
 				6406E1D51C6A4AEF003762B2 /* main.m in Sources */,
 				6406E1EE1C6B3281003762B2 /* Card.m in Sources */,
+				64DCB4731C7206C100AA116C /* SetDeck.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

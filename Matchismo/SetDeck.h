@@ -7,7 +7,8 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "Deck.h"
 
-@interface SetDeck : NSObject
+@interface SetDeck : Deck
 
 @end

@@ -7,6 +7,7 @@
 //
 
 #import "MinMaxMatchingStrategy.h"
+#import "PlayingCard.h"
 
 @implementation MinMaxMatchingStrategy
 
@@ -24,50 +25,52 @@ static const int MATCH_BONUS = 4;
   return self;
 }
 
-- (NSInteger)matchCard:(Card *) card withOthers:(NSArray *)otherCards returnInvolved:(NSMutableArray *) involved{
-  
-  NSMutableArray* choosenCards = [[NSMutableArray alloc] init];
+- (NSInteger)matchCards:(NSArray *)cards {
   NSInteger scoreDelta = 0;
-  for (Card *other in otherCards) {
-    if (other.isChosen && !other.isMatched) {
-      [choosenCards addObject:other];
+
+  if ([cards count] != (self.maxCardsNumberToMatch)) {
+    return scoreDelta;
+  }
+
+  int matchedCount = 0;
+  for (int i = 0; i < [cards count] - 1; ++i) {
+    for (int j = i + 1; j < [cards count]; ++j) {
+      NSInteger matchScore = [self matchCard:cards[i] withOther:cards[j]];
+      
+      if (matchScore) {
+        scoreDelta += (matchScore * MATCH_BONUS);
+        ++matchedCount;
+      }
     }
   }
   
-  if ([choosenCards count] == (self.maxCardsNumberToMatch-1))
-  {
-    NSMutableArray* matchedCards = [[NSMutableArray alloc] init];
-    for (Card *otherChoosen in choosenCards) {
-      int matchScore = [card match:@[otherChoosen]];
-      if (matchScore) {
-        scoreDelta += (matchScore * MATCH_BONUS);
-        [matchedCards addObject:otherChoosen];
-      }
-      else {
-        scoreDelta -= MISMATCH_PENALTY;
-      }
+  if (matchedCount >= self.minCardsNumberToMatch-1) {
+    for (Card *c in cards) {
+      c.matched = YES;
     }
-    
-    if ([matchedCards count] >= (self.minCardsNumberToMatch-1)) {
-      for (Card *otherChoosen in choosenCards) {
-        otherChoosen.matched = YES;
-      }
-      card.matched = YES;
-    }
-    else {
-      for (Card *otherChoosen in choosenCards) {
-        otherChoosen.chosen = NO;
-      }
+  }
+  else {
+    scoreDelta -= MISMATCH_PENALTY;
+    for (Card *c in cards) {
+      c.chosen = NO;
     }
   }
 
-  for (Card* choosen in choosenCards) {
-    [involved addObject:[choosen clone]];
+  return scoreDelta;
+}
+
+- (NSInteger)matchCard:(PlayingCard *)card withOther:(PlayingCard *)other {
+  int score = 0;
+  
+  if (other.rank == card.rank) {
+    score += 4;
+  }
+  else if ([other.suite isEqualToString:card.suite]) {
+    score += 1;
   }
   
-  [involved addObject:[card clone]];
-  
-  return scoreDelta;
+  return score;
+
 }
 
 @end

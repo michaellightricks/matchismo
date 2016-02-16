@@ -50,22 +50,6 @@
   return [ranks[self.rank] stringByAppendingString:self.suite];
 }
 
-- (int)match:(NSArray *)otherCards {
-  int score = 0;
-  
-  for (PlayingCard* other in otherCards)
-  {
-    if (other.rank == self.rank) {
-      score += 4;
-    }
-    else if ([other.suite isEqualToString:self.suite]) {
-      score += 1;
-    }
-  }
-  
-  return score;
-}
-
 + (NSArray *)validSuits {
   NSArray *result = @[@"♠️", @"♣️", @"♥️", @"♦️"];
   return result;
