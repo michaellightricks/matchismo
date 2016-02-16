@@ -20,6 +20,8 @@
 		647A5B8A1C722D9100CB6C14 /* SetMatchingStrategy.m in Sources */ = {isa = PBXBuildFile; fileRef = 647A5B891C722D9100CB6C14 /* SetMatchingStrategy.m */; };
 		647A5B8D1C72333400CB6C14 /* PlayingCardMatchingGame.m in Sources */ = {isa = PBXBuildFile; fileRef = 647A5B8C1C72333400CB6C14 /* PlayingCardMatchingGame.m */; };
 		647A5B901C73140D00CB6C14 /* SetMatchingGame.m in Sources */ = {isa = PBXBuildFile; fileRef = 647A5B8F1C73140D00CB6C14 /* SetMatchingGame.m */; };
+		647A5B931C7317F500CB6C14 /* PlayingCardsMatchingGameVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 647A5B921C7317F500CB6C14 /* PlayingCardsMatchingGameVC.m */; };
+		647A5B961C731F3600CB6C14 /* SetMatchingGameVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 647A5B951C731F3600CB6C14 /* SetMatchingGameVC.m */; };
 		648CBCF31C6B68B200F4A9A1 /* CardMatchingGame.m in Sources */ = {isa = PBXBuildFile; fileRef = 648CBCF21C6B68B200F4A9A1 /* CardMatchingGame.m */; };
 		648CBCFA1C6C898D00F4A9A1 /* MinMaxMatchingStrategy.m in Sources */ = {isa = PBXBuildFile; fileRef = 648CBCF91C6C898D00F4A9A1 /* MinMaxMatchingStrategy.m */; };
 		64DCB4701C7206B100AA116C /* SetCard.m in Sources */ = {isa = PBXBuildFile; fileRef = 64DCB46F1C7206B100AA116C /* SetCard.m */; };
@@ -51,6 +53,10 @@
 		647A5B8C1C72333400CB6C14 /* PlayingCardMatchingGame.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlayingCardMatchingGame.m; sourceTree = "<group>"; };
 		647A5B8E1C73140D00CB6C14 /* SetMatchingGame.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SetMatchingGame.h; sourceTree = "<group>"; };
 		647A5B8F1C73140D00CB6C14 /* SetMatchingGame.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SetMatchingGame.m; sourceTree = "<group>"; };
+		647A5B911C7317F500CB6C14 /* PlayingCardsMatchingGameVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlayingCardsMatchingGameVC.h; sourceTree = "<group>"; };
+		647A5B921C7317F500CB6C14 /* PlayingCardsMatchingGameVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlayingCardsMatchingGameVC.m; sourceTree = "<group>"; };
+		647A5B941C731F3600CB6C14 /* SetMatchingGameVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SetMatchingGameVC.h; sourceTree = "<group>"; };
+		647A5B951C731F3600CB6C14 /* SetMatchingGameVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SetMatchingGameVC.m; sourceTree = "<group>"; };
 		648CBCF11C6B68B200F4A9A1 /* CardMatchingGame.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CardMatchingGame.h; sourceTree = "<group>"; };
 		648CBCF21C6B68B200F4A9A1 /* CardMatchingGame.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CardMatchingGame.m; sourceTree = "<group>"; };
 		648CBCF71C6C88A000F4A9A1 /* MatchingStrategy.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MatchingStrategy.h; sourceTree = "<group>"; };
@@ -96,6 +102,10 @@
 				6406E1D71C6A4AEF003762B2 /* AppDelegate.m */,
 				6406E1D91C6A4AEF003762B2 /* MatchingGameViewController.h */,
 				6406E1DA1C6A4AEF003762B2 /* MatchingGameViewController.m */,
+				647A5B911C7317F500CB6C14 /* PlayingCardsMatchingGameVC.h */,
+				647A5B921C7317F500CB6C14 /* PlayingCardsMatchingGameVC.m */,
+				647A5B941C731F3600CB6C14 /* SetMatchingGameVC.h */,
+				647A5B951C731F3600CB6C14 /* SetMatchingGameVC.m */,
 				6406E1DC1C6A4AEF003762B2 /* Main.storyboard */,
 				6406E1DF1C6A4AEF003762B2 /* Assets.xcassets */,
 				648CBCF51C6B68E600F4A9A1 /* Model */,
@@ -230,6 +240,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				647A5B931C7317F500CB6C14 /* PlayingCardsMatchingGameVC.m in Sources */,
 				648CBCFA1C6C898D00F4A9A1 /* MinMaxMatchingStrategy.m in Sources */,
 				647A5B901C73140D00CB6C14 /* SetMatchingGame.m in Sources */,
 				647A5B8A1C722D9100CB6C14 /* SetMatchingStrategy.m in Sources */,
@@ -237,6 +248,7 @@
 				6406E1F11C6B3D1F003762B2 /* Deck.m in Sources */,
 				6406E1DB1C6A4AEF003762B2 /* MatchingGameViewController.m in Sources */,
 				647A5B8D1C72333400CB6C14 /* PlayingCardMatchingGame.m in Sources */,
+				647A5B961C731F3600CB6C14 /* SetMatchingGameVC.m in Sources */,
 				64DCB4701C7206B100AA116C /* SetCard.m in Sources */,
 				6406E1D81C6A4AEF003762B2 /* AppDelegate.m in Sources */,
 				648CBCF31C6B68B200F4A9A1 /* CardMatchingGame.m in Sources */,

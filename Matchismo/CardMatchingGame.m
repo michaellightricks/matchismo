@@ -11,19 +11,11 @@
 
 @interface GameTurn : NSObject
 
-@property (nonatomic, strong) NSMutableArray* choosenCards;
+@property (nonatomic, strong) NSMutableArray* chosenCards;
 @property (nonatomic) NSInteger scoreDelta;
 @end
 
 @implementation GameTurn
-
-- (NSMutableArray *) choosenCards {
-  if (!_choosenCards) {
-    _choosenCards = [[NSMutableArray alloc] init];
-  }
-  
-  return _choosenCards;
-}
 
 @end
 
@@ -39,7 +31,6 @@
 @implementation CardMatchingGame
 
 static const int COST_TO_CHOSE = 1;
-
 
 - (NSMutableArray *)turns {
   if (!_turns) {
@@ -105,20 +96,28 @@ static const int COST_TO_CHOSE = 1;
     return;
   }
 
-  GameTurn* turn = [[GameTurn alloc] init];
-  
   card.chosen = YES;
   
-  for (Card * card in self.cards) {
-    if (card.isChosen && !card.isMatched) {
-      [turn.choosenCards addObject:card];
+  GameTurn* turn = [[GameTurn alloc] init];
+  turn.chosenCards = [[NSMutableArray alloc] init];
+  
+  for (Card *c in self.cards) {
+    if (c.isChosen && !c.isMatched && c != card) {
+      [turn.chosenCards addObject:c];
     }
   }
   
-  turn.scoreDelta = [self.matchingStrategy matchCards:turn.choosenCards];
+  [turn.chosenCards addObject:card];
+  
+  turn.scoreDelta = [self.matchingStrategy matchCards:turn.chosenCards];
+  
   turn.scoreDelta -= COST_TO_CHOSE;
   
-  card.chosen = YES;
+  turn.chosenCards = [[NSMutableArray alloc ] init];
+ 
+  for (int i = 0; i < [turn.chosenCards count]; ++i) {
+    turn.chosenCards[i] = [turn.chosenCards[i] clone];
+  }
   
   self.score += turn.scoreDelta;
   
@@ -132,7 +131,7 @@ static const int COST_TO_CHOSE = 1;
   
   bool isMatched = false;
   
-  for (Card *card in turn.choosenCards) {
+  for (Card *card in turn.chosenCards) {
     cardsString = [NSString stringWithFormat:@"%@%@ ", cardsString, card.contents];
     isMatched = isMatched || card.isMatched;
   }

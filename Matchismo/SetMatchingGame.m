@@ -8,7 +8,6 @@ NS_ASSUME_NONNULL_BEGIN
 
 @implementation SetMatchingGame
 
-
 - (Deck *)createDeck {
   return [[SetDeck alloc] init];
 }

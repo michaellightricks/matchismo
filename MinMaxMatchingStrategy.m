@@ -28,6 +28,9 @@ static const int MATCH_BONUS = 4;
 - (NSInteger)matchCards:(NSArray *)cards {
   NSInteger scoreDelta = 0;
 
+  Card* lastCard = (Card*)cards.lastObject;
+  lastCard.chosen = YES;
+  
   if ([cards count] != (self.maxCardsNumberToMatch)) {
     return scoreDelta;
   }
@@ -52,10 +55,12 @@ static const int MATCH_BONUS = 4;
   else {
     scoreDelta -= MISMATCH_PENALTY;
     for (Card *c in cards) {
-      c.chosen = NO;
+      if (c != lastCard) {
+        c.chosen = NO;
+      }
     }
   }
-
+  
   return scoreDelta;
 }
 

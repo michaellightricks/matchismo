@@ -28,6 +28,5 @@
 @property (strong, nonatomic) NSString *status;
 @property (readonly) BOOL started;
 @property (readonly) NSInteger score;
-@property NSUInteger maxMatchCount;
 
 @end

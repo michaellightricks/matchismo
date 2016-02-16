@@ -40,27 +40,33 @@ typedef struct cardMatchStatisticsType {
         stats[0].equalsCount += (card.rank == other.rank);
         stats[1].equalsCount += (card.shading == other.shading);
         stats[2].equalsCount += ([card.symbol isEqualToString:other.symbol]);
-        stats[3].equalsCount += ([card.color isEqual:other.color]);
-
+        stats[3].equalsCount += (card.color == other.color);
       }
       
       for (int k = 0; k < 4; ++k) {
-        stats[k].equalsCount = 0;
         stats[k].equalsMax = MAX(stats[k].equalsMax, stats[k].equalsCount);
+        stats[k].equalsCount = 0;
       }
     }
     
     BOOL set = YES;
   
     for (int k = 0; k < 4 && set; ++k) {
-      set = set && (stats[k].equalsMax == [cards count] || stats[k].equalsMax == 0);
+      set = set && ((stats[k].equalsMax == [cards count]-1) || stats[k].equalsMax == 0);
     }
     
     if (set) {
       scoreDelta += 4;
+      for (Card* card in cards) {
+        card.matched = YES;
+      }
     }
     else {
       scoreDelta -= 2;
+      for (Card* card in cards) {
+        card.chosen = NO;
+      }
+
     }
     
   }

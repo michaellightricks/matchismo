@@ -19,12 +19,8 @@
   return @[@"▲", @"●", @"■"];
 }
 
-+(NSArray *)validColors {
-  return @[[UIColor redColor], [UIColor greenColor], [UIColor purpleColor]];
-}
-
 - (NSString*)contents {
-  return [NSString stringWithFormat:@"%lu%@%d%@", (unsigned long)self.rank, self.symbol, self.shading, self.color.description];
+  return [NSString stringWithFormat:@"%lu%@%d%d", (unsigned long)self.rank, self.symbol, self.shading, self.color];
 }
 
 - (instancetype)initWithOther:(SetCard *) other {

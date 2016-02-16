@@ -1,13 +1,32 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9532" systemVersion="15D21" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9532" systemVersion="15D21" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="Mdf-tq-Dt2">
     <dependencies>
+        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9530"/>
     </dependencies>
     <scenes>
-        <!--Matching Game View Controller-->
+        <!--Tab Bar Controller-->
+        <scene sceneID="4im-Ml-HAf">
+            <objects>
+                <tabBarController id="Mdf-tq-Dt2" sceneMemberID="viewController">
+                    <tabBar key="tabBar" contentMode="scaleToFill" id="JE4-ib-B9E">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="49"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    </tabBar>
+                    <connections>
+                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="viewControllers" id="4yh-NP-958"/>
+                        <segue destination="uxX-7u-h6Z" kind="relationship" relationship="viewControllers" id="gA8-zC-r8c"/>
+                    </connections>
+                </tabBarController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="RpC-YP-Dsl" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-2419.5" y="110.25"/>
+        </scene>
+        <!--Playing Card Game-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="MatchingGameViewController" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="PlayingCardsMatchingGameVC" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
@@ -25,7 +44,7 @@
                                     <rect key="frame" x="220" y="24" width="48" height="21"/>
                                 </variation>
                                 <variation key="heightClass=regular-widthClass=compact" fixedFrame="YES">
-                                    <rect key="frame" x="260" y="592" width="48" height="21"/>
+                                    <rect key="frame" x="260" y="553" width="48" height="21"/>
                                 </variation>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Score: 0" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FSR-Qf-5tZ">
@@ -36,6 +55,9 @@
                                 <variation key="widthClass=compact" fixedFrame="YES">
                                     <rect key="frame" x="20" y="559" width="360" height="21"/>
                                 </variation>
+                                <variation key="heightClass=regular-widthClass=compact" fixedFrame="YES">
+                                    <rect key="frame" x="20" y="520" width="360" height="21"/>
+                                </variation>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Kwo-k0-Of3">
                                 <rect key="frame" x="-42" y="-21" width="42" height="21"/>
@@ -44,6 +66,9 @@
                                 <nil key="highlightedColor"/>
                                 <variation key="widthClass=compact" fixedFrame="YES">
                                     <rect key="frame" x="20" y="530" width="360" height="21"/>
+                                </variation>
+                                <variation key="heightClass=regular-widthClass=compact" fixedFrame="YES">
+                                    <rect key="frame" x="20" y="491" width="360" height="21"/>
                                 </variation>
                             </label>
                             <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="5qM-JB-s54">
@@ -58,10 +83,10 @@
                                     <rect key="frame" x="276" y="21" width="64" height="29"/>
                                 </variation>
                                 <variation key="heightClass=regular-widthClass=compact" fixedFrame="YES">
-                                    <rect key="frame" x="316" y="589" width="64" height="29"/>
+                                    <rect key="frame" x="316" y="550" width="64" height="29"/>
                                 </variation>
                                 <connections>
-                                    <action selector="matchMaxValueChanged:" destination="BYZ-38-t0r" eventType="valueChanged" id="ME9-qf-jam"/>
+                                    <action selector="matchMaxValueChanged:" destination="BYZ-38-t0r" eventType="valueChanged" id="34D-cw-8qM"/>
                                 </connections>
                             </segmentedControl>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5bO-pF-9iW">
@@ -71,7 +96,7 @@
                                     <rect key="frame" x="60" y="20" width="46" height="30"/>
                                 </variation>
                                 <variation key="heightClass=regular-widthClass=compact" fixedFrame="YES">
-                                    <rect key="frame" x="20" y="588" width="46" height="30"/>
+                                    <rect key="frame" x="20" y="549" width="46" height="30"/>
                                 </variation>
                                 <connections>
                                     <action selector="touchNew:" destination="BYZ-38-t0r" eventType="touchUpInside" id="W2b-8d-nhG"/>
@@ -98,17 +123,94 @@
                             </mask>
                         </variation>
                     </view>
+                    <tabBarItem key="tabBarItem" title="Playing Card Game" id="eQN-Bm-dFl"/>
                     <connections>
-                        <outlet property="btnNew" destination="5bO-pF-9iW" id="CB6-aq-cqf"/>
-                        <outlet property="descLabel" destination="Kwo-k0-Of3" id="BIt-Bw-ejM"/>
-                        <outlet property="matchCountSwitch" destination="5qM-JB-s54" id="XiI-xZ-S9v"/>
-                        <outlet property="matchSwitch" destination="5qM-JB-s54" id="awE-8F-4OM"/>
-                        <outlet property="scoreLabel" destination="FSR-Qf-5tZ" id="Qdt-gx-euJ"/>
+                        <outlet property="btnNew" destination="5bO-pF-9iW" id="EyB-eW-OBN"/>
+                        <outlet property="descLabel" destination="Kwo-k0-Of3" id="wma-uf-aXP"/>
+                        <outlet property="matchSwitch" destination="5qM-JB-s54" id="59b-hC-Ldd"/>
+                        <outlet property="scoreLabel" destination="FSR-Qf-5tZ" id="zZa-H9-GyK"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="120" y="633"/>
+            <point key="canvasLocation" x="-733.5" y="378.75"/>
+        </scene>
+        <!--Set Game-->
+        <scene sceneID="UZM-CA-yFS">
+            <objects>
+                <viewController id="uxX-7u-h6Z" customClass="SetMatchingGameVC" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="bAK-Ws-Fzn"/>
+                        <viewControllerLayoutGuide type="bottom" id="XJ6-yL-Kv2"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="aWU-vG-hgf">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Score: 0" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Inw-fT-5EJ">
+                                <rect key="frame" x="-42" y="-21" width="42" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                                <variation key="widthClass=compact" fixedFrame="YES">
+                                    <rect key="frame" x="20" y="559" width="360" height="21"/>
+                                </variation>
+                                <variation key="heightClass=regular-widthClass=compact" fixedFrame="YES">
+                                    <rect key="frame" x="20" y="520" width="360" height="21"/>
+                                </variation>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gdV-uW-7Ca">
+                                <rect key="frame" x="-42" y="-21" width="42" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                                <variation key="widthClass=compact" fixedFrame="YES">
+                                    <rect key="frame" x="20" y="530" width="360" height="21"/>
+                                </variation>
+                                <variation key="heightClass=regular-widthClass=compact" fixedFrame="YES">
+                                    <rect key="frame" x="20" y="491" width="360" height="21"/>
+                                </variation>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ygK-Tf-ilm">
+                                <rect key="frame" x="-23" y="-15" width="46" height="30"/>
+                                <state key="normal" title="New" backgroundImage="cardfront"/>
+                                <variation key="widthClass=compact" fixedFrame="YES">
+                                    <rect key="frame" x="60" y="20" width="46" height="30"/>
+                                </variation>
+                                <variation key="heightClass=regular-widthClass=compact" fixedFrame="YES">
+                                    <rect key="frame" x="20" y="549" width="46" height="30"/>
+                                </variation>
+                                <connections>
+                                    <action selector="touchNew:" destination="uxX-7u-h6Z" eventType="touchUpInside" id="OEd-EF-Zvd"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" red="0.0" green="0.50196081400000003" blue="0.25098040700000002" alpha="1" colorSpace="calibratedRGB"/>
+                        <variation key="default">
+                            <mask key="subviews">
+                                <exclude reference="Inw-fT-5EJ"/>
+                                <exclude reference="gdV-uW-7Ca"/>
+                                <exclude reference="ygK-Tf-ilm"/>
+                            </mask>
+                        </variation>
+                        <variation key="widthClass=compact">
+                            <mask key="subviews">
+                                <include reference="Inw-fT-5EJ"/>
+                                <include reference="gdV-uW-7Ca"/>
+                                <include reference="ygK-Tf-ilm"/>
+                            </mask>
+                        </variation>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Set Game" id="Ytt-im-Plm" userLabel="Set Game"/>
+                    <connections>
+                        <outlet property="btnNew" destination="ygK-Tf-ilm" id="x2v-v9-ZGT"/>
+                        <outlet property="descLabel" destination="gdV-uW-7Ca" id="Ij5-1T-oo6"/>
+                        <outlet property="scoreLabel" destination="Inw-fT-5EJ" id="tkF-rn-yDo"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Q59-dG-vRP" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1422" y="378.75"/>
         </scene>
     </scenes>
     <resources>

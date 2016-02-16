@@ -7,29 +7,20 @@
 //
 
 #import "MatchingGameViewController.h"
-#import "PlayingCardMatchingGame.h"
+
 #import "SetMatchingGame.h"
 
 @interface MatchingGameViewController ()
 
 @property (strong, nonatomic) NSMutableArray *cardButtons;
-@property (weak, nonatomic) IBOutlet UISegmentedControl *matchSwitch;
-@property (strong, nonatomic) CardMatchingGame* game;
+
 @property (weak, nonatomic) IBOutlet UILabel *scoreLabel;
 @property (weak, nonatomic) IBOutlet UIButton *btnNew;
 @property (weak, nonatomic) IBOutlet UILabel *descLabel;
-@property (weak, nonatomic) IBOutlet UISegmentedControl *matchCountSwitch;
 
 @end
 
-@implementation ViewController
-
-static const int MAX_MATCH_NUMBERS[] = {2, 3};
-
-- (IBAction)matchMaxValueChanged:(id)sender {
-
-  self.game.maxMatchCount = MAX_MATCH_NUMBERS[self.matchSwitch.selectedSegmentIndex];
-}
+@implementation MatchingGameViewController
 
 - (void) addButtons {
   
@@ -65,17 +56,20 @@ static const int MAX_MATCH_NUMBERS[] = {2, 3};
 
 - (CardMatchingGame *)game {
   if (!_game) {
-    //_game = [[PlayingCardMatchingGame alloc] initWithCardCount:[self.cardButtons count]];
-    _game = [[SetMatchingGame alloc] initWithCardCount:[self.cardButtons count]];
+    _game = [self createGame:[self.cardButtons count]];//[[SetMatchingGame alloc] initWithCardCount:[self.cardButtons count]];
   }
   
   return _game;
 }
 
+-(CardMatchingGame *)createGame:(NSUInteger)cardsCount {
+  assert(0);
+  return nil;
+}
+
 - (void)viewWillLayoutSubviews {
   [super viewWillLayoutSubviews];
   [self addButtons];
-  [self matchMaxValueChanged:self.matchCountSwitch];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -102,20 +96,17 @@ static const int MAX_MATCH_NUMBERS[] = {2, 3};
 {
   for (UIButton* btn in self.cardButtons) {
     Card *card = [self.game cardAtIndex:[self.cardButtons indexOfObject:btn]];
-    
-    [btn setTitle:[self getTitleForCard:card] forState:UIControlStateNormal];
+    [btn setAttributedTitle:[self getTitleForCard:card] forState:UIControlStateNormal];
     [btn setBackgroundImage:[self getImageForCard:card] forState:UIControlStateNormal];
     
     btn.enabled = !card.isMatched;
     self.descLabel.text = self.game.status;
     self.scoreLabel.text = [NSString stringWithFormat:@"Score: %ld",(long)self.game.score];
   }
-  
-  self.matchSwitch.enabled = !self.game.started;
 }
 
-- (NSString *)getTitleForCard:(Card *)card {
-  return card.isChosen ? card.contents : @"";
+- (NSAttributedString *)getTitleForCard:(Card *)card {
+  return [[NSAttributedString alloc] initWithString:( card.isChosen ? card.contents : @"")];
 }
 
 - (UIImage *)getImageForCard:(Card *)card {

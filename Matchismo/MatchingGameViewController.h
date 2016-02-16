@@ -7,11 +7,15 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "Deck.h"
+#import "CardMatchingGame.h"
 
 @interface MatchingGameViewController : UIViewController
 
-@property (nonatomic, strong) Deck *deck;
+-(CardMatchingGame *)createGame:(NSUInteger)cardsCount;
+- (void)updateUI;
+- (NSString *)getTitleForCard:(Card *)card;
+
+@property (strong, nonatomic) CardMatchingGame* game;
 
 @end
 

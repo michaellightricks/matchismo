@@ -6,9 +6,10 @@
 //  Copyright © 2016 Michael Kupchick. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
 #import "SetDeck.h"
 #import "SetCard.h"
+
+NS_ASSUME_NONNULL_BEGIN
 
 @implementation SetDeck
 
@@ -18,7 +19,7 @@
   if (self)
   {
     for (NSUInteger rank = 1; rank <= [SetCard maxRank]; ++rank) {
-      for (UIColor* color in [SetCard validColors]) {
+      for (SetCardColor color = 0; color < COLORS_MAX; ++color) {
         for (NSString* symbol in [SetCard validSymbols]) {
           for (SetCardShading shading = 0; shading < SHADING_MAX; ++shading) {
             SetCard* card = [[SetCard alloc] init];
@@ -38,3 +39,5 @@
 }
 
 @end
+
+NS_ASSUME_NONNULL_END
