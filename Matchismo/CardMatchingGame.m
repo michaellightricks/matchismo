@@ -9,12 +9,6 @@
 #import "CardMatchingGame.h"
 #import "MinMaxMatchingStrategy.h"
 
-@interface GameTurn : NSObject
-
-@property (nonatomic, strong) NSMutableArray* chosenCards;
-@property (nonatomic) NSInteger scoreDelta;
-@end
-
 @implementation GameTurn
 
 @end
@@ -23,7 +17,6 @@
 
 @property (nonatomic, strong) NSMutableArray *cards;
 @property (nonatomic, readwrite) NSInteger score;
-@property (nonatomic, strong) NSMutableArray* turns;
 @property (nonatomic, strong) id <MatchingStrategy> matchingStrategy;
 
 @end
@@ -60,7 +53,6 @@ static const int COST_TO_CHOSE = 1;
   
   if (self) {
     _started = NO;
-    _status = @"New game";
     Deck *deck = [self createDeck];
     for (int i = 0; i < count; ++i) {
       Card *card = [deck drawRandomCard];
@@ -96,52 +88,29 @@ static const int COST_TO_CHOSE = 1;
     return;
   }
 
-  card.chosen = YES;
-  
   GameTurn* turn = [[GameTurn alloc] init];
   turn.chosenCards = [[NSMutableArray alloc] init];
   
   for (Card *c in self.cards) {
-    if (c.isChosen && !c.isMatched && c != card) {
+    if (c.isChosen && !c.isMatched) {
       [turn.chosenCards addObject:c];
     }
   }
   
+  card.chosen = YES;
   [turn.chosenCards addObject:card];
   
   turn.scoreDelta = [self.matchingStrategy matchCards:turn.chosenCards];
-  
   turn.scoreDelta -= COST_TO_CHOSE;
-  
-  turn.chosenCards = [[NSMutableArray alloc ] init];
  
+  // clone cards for history
   for (int i = 0; i < [turn.chosenCards count]; ++i) {
     turn.chosenCards[i] = [turn.chosenCards[i] clone];
   }
   
-  self.score += turn.scoreDelta;
-  
   [self.turns addObject:turn];
-  [self updateStatus:turn];
-}
-
-- (void)updateStatus:(GameTurn *) turn {
   
-  NSString* cardsString = [[NSString alloc] init];
-  
-  bool isMatched = false;
-  
-  for (Card *card in turn.chosenCards) {
-    cardsString = [NSString stringWithFormat:@"%@%@ ", cardsString, card.contents];
-    isMatched = isMatched || card.isMatched;
-  }
- 
-  if (isMatched) {
-    self.status = [NSString stringWithFormat:@"%@are match added %ld points", cardsString, (long)turn.scoreDelta];
-  }
-  else {
-    self.status = [NSString stringWithFormat:@"%@ penalty %ld points", cardsString, (long)turn.scoreDelta];
-  }
+  self.score += turn.scoreDelta;
 }
 
 - (Card *)cardAtIndex:(NSUInteger)index {

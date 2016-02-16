@@ -70,6 +70,7 @@
 - (void)viewWillLayoutSubviews {
   [super viewWillLayoutSubviews];
   [self addButtons];
+  [self updateUI];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -98,19 +99,46 @@
     Card *card = [self.game cardAtIndex:[self.cardButtons indexOfObject:btn]];
     [btn setAttributedTitle:[self getTitleForCard:card] forState:UIControlStateNormal];
     [btn setBackgroundImage:[self getImageForCard:card] forState:UIControlStateNormal];
-    
+
     btn.enabled = !card.isMatched;
-    self.descLabel.text = self.game.status;
-    self.scoreLabel.text = [NSString stringWithFormat:@"Score: %ld",(long)self.game.score];
   }
+
+  self.descLabel.attributedText = [self getTurnStatus:self.game.turns.lastObject];
+  self.scoreLabel.text = [NSString stringWithFormat:@"Score: %ld",(long)self.game.score];
 }
+
+- (NSAttributedString*) getTurnStatus:(GameTurn *) turn {
+  
+  if (!turn) {
+    return [[NSMutableAttributedString alloc] initWithString:@"New game"];
+  }
+  
+  NSMutableAttributedString* result = [[NSMutableAttributedString alloc] init];
+  
+  bool isMatched = false;
+  
+  for (Card *card in turn.chosenCards) {
+    [result appendAttributedString:[self getTitleForCard:card]];//= [NSString stringWithFormat:@"%@%@ ", cardsString, card.contents];
+    isMatched = isMatched || card.isMatched;
+  }
+  
+  NSString* scoreString =
+    (isMatched) ? [NSString stringWithFormat:@"are match added %ld points", (long)turn.scoreDelta]
+                : [NSString stringWithFormat:@"penalty %ld points", (long)turn.scoreDelta];
+  
+  [result appendAttributedString:[[NSMutableAttributedString alloc] initWithString:scoreString]];
+  
+  return result;
+}
+
 
 - (NSAttributedString *)getTitleForCard:(Card *)card {
   return [[NSAttributedString alloc] initWithString:( card.isChosen ? card.contents : @"")];
 }
 
 - (UIImage *)getImageForCard:(Card *)card {
-  return [UIImage imageNamed: card.isChosen ? @"cardfront" : @"cardback"];
+  assert(0);
+  return nil;
 }
 
 @end

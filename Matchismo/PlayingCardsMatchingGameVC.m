@@ -35,6 +35,10 @@ static const int MAX_MATCH_NUMBERS[] = {2, 3};
   self.matchSwitch.enabled = !self.game.started;
 }
 
+- (UIImage *)getImageForCard:(Card *)card {
+  return [UIImage imageNamed: card.isChosen ? @"cardfront" : @"cardback"];
+}
+
 @end
 
 NS_ASSUME_NONNULL_END

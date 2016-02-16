@@ -11,6 +11,13 @@
 #import "Deck.h"
 #import "MatchingStrategy.h"
 
+@interface GameTurn : NSObject
+
+@property (nonatomic, strong) NSMutableArray* chosenCards;
+@property (nonatomic) NSInteger scoreDelta;
+
+@end
+
 @interface CardMatchingGame : NSObject
 
 - (instancetype)initWithCardCount:(NSUInteger)count;
@@ -25,8 +32,8 @@
 
 // protected abstract end
 
-@property (strong, nonatomic) NSString *status;
 @property (readonly) BOOL started;
 @property (readonly) NSInteger score;
+@property (nonatomic, strong) NSMutableArray* turns;
 
 @end

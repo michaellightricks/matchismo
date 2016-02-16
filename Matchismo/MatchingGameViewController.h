@@ -13,7 +13,8 @@
 
 -(CardMatchingGame *)createGame:(NSUInteger)cardsCount;
 - (void)updateUI;
-- (NSString *)getTitleForCard:(Card *)card;
+- (NSAttributedString *)getTitleForCard:(Card *)card;
+- (UIImage *)getImageForCard:(Card *)card;
 
 @property (strong, nonatomic) CardMatchingGame* game;
 

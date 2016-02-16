@@ -20,16 +20,12 @@ NS_ASSUME_NONNULL_BEGIN
 }
 
 - (NSAttributedString *)getTitleForCard:(Card *)card {
-  
-  if (!card.isChosen) {
-    return [[NSAttributedString alloc] initWithString:@""];
-  }
-  
+ 
   SetCard* myCard = (SetCard *)card;
-  NSString* content = myCard.symbol;
-  for (int i = 0; i < myCard.rank-1; ++i) {
-    content = [NSString stringWithFormat:@"%@%@", content, myCard.symbol];
-  }
+  NSString* content = [NSString stringWithFormat:@"%lu%@", (unsigned long)myCard.rank, myCard.symbol];
+//  for (int i = 0; i < myCard.rank-1; ++i) {
+//    content = [NSString stringWithFormat:@"%@\n%@", content, myCard.symbol];
+//  }
 
   NSRange range = NSMakeRange(0, [content length]);
   
@@ -58,6 +54,10 @@ NS_ASSUME_NONNULL_BEGIN
   [result addAttribute:NSFontAttributeName value:[UIFont systemFontOfSize:14] range:range];
   
   return result;
+}
+
+- (UIImage *)getImageForCard:(Card *)card {
+  return [UIImage imageNamed: card.isChosen ? @"setcardchosen" : @"setcard"];
 }
 
 @end
