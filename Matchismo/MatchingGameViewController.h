@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "Deck.h"
 
-@interface ViewController : UIViewController
+@interface MatchingGameViewController : UIViewController
 
 @property (nonatomic, strong) Deck *deck;
 

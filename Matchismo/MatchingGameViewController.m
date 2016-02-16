@@ -6,11 +6,11 @@
 //  Copyright © 2016 Michael Kupchick. All rights reserved.
 //
 
-#import "ViewController.h"
+#import "MatchingGameViewController.h"
 #import "PlayingCardMatchingGame.h"
 #import "SetMatchingGame.h"
 
-@interface ViewController ()
+@interface MatchingGameViewController ()
 
 @property (strong, nonatomic) NSMutableArray *cardButtons;
 @property (weak, nonatomic) IBOutlet UISegmentedControl *matchSwitch;
