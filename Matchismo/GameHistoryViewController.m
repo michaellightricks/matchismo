@@ -29,7 +29,7 @@ NS_ASSUME_NONNULL_BEGIN
     [text appendAttributedString:[[NSAttributedString alloc]
                                   initWithString:[NSString stringWithFormat:@" overall score %ld", (long)turn.score]]];
     [text appendAttributedString:[[NSAttributedString alloc] initWithString:@"\n"]];
-  } 
+  }
   
   [self.historyTextView setAttributedText:text];
 }

@@ -66,8 +66,8 @@
 		648CBCF11C6B68B200F4A9A1 /* CardMatchingGame.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CardMatchingGame.h; sourceTree = "<group>"; };
 		648CBCF21C6B68B200F4A9A1 /* CardMatchingGame.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CardMatchingGame.m; sourceTree = "<group>"; };
 		648CBCF71C6C88A000F4A9A1 /* MatchingStrategy.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MatchingStrategy.h; sourceTree = "<group>"; };
-		648CBCF81C6C898D00F4A9A1 /* MinMaxMatchingStrategy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MinMaxMatchingStrategy.h; path = ../MinMaxMatchingStrategy.h; sourceTree = "<group>"; };
-		648CBCF91C6C898D00F4A9A1 /* MinMaxMatchingStrategy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MinMaxMatchingStrategy.m; path = ../MinMaxMatchingStrategy.m; sourceTree = "<group>"; };
+		648CBCF81C6C898D00F4A9A1 /* MinMaxMatchingStrategy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MinMaxMatchingStrategy.h; sourceTree = "<group>"; };
+		648CBCF91C6C898D00F4A9A1 /* MinMaxMatchingStrategy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MinMaxMatchingStrategy.m; sourceTree = "<group>"; };
 		64DCB46E1C7206B100AA116C /* SetCard.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SetCard.h; sourceTree = "<group>"; };
 		64DCB46F1C7206B100AA116C /* SetCard.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SetCard.m; sourceTree = "<group>"; };
 		64DCB4711C7206C100AA116C /* SetDeck.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SetDeck.h; sourceTree = "<group>"; };
