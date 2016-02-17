@@ -8,7 +8,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface PlayingCardMatchingGame : CardMatchingGame
 
-@property NSUInteger maxMatchCount;
+@property (nonatomic) NSUInteger maxMatchCount;
 
 @end
 

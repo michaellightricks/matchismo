@@ -16,6 +16,10 @@ NS_ASSUME_NONNULL_BEGIN
 
 static const int MAX_MATCH_NUMBERS[] = {2, 3};
 
+- (NSUInteger)cardsNumber {
+  return 30;
+}
+
 - (IBAction)matchMaxValueChanged:(id)sender {
   PlayingCardMatchingGame *myGame = (PlayingCardMatchingGame *)self.game;
   myGame.maxMatchCount = MAX_MATCH_NUMBERS[self.matchSwitch.selectedSegmentIndex];

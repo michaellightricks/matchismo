@@ -9,12 +9,23 @@
 #import <UIKit/UIKit.h>
 #import "CardMatchingGame.h"
 
-@interface MatchingGameViewController : UIViewController
+@protocol TurnTitleProvider <NSObject>
 
--(CardMatchingGame *)createGame:(NSUInteger)cardsCount;
+- (NSAttributedString*)getTurnStatus:(GameTurn *) turn;
+
+@end
+
+@interface MatchingGameViewController : UIViewController <TurnTitleProvider>
+
+- (CardMatchingGame *)createGame:(NSUInteger)cardsCount;
 - (void)updateUI;
 - (NSAttributedString *)getTitleForCard:(Card *)card;
 - (UIImage *)getImageForCard:(Card *)card;
+- (NSAttributedString*)getTurnStatus:(GameTurn *) turn;
+
+// abstract protected start
+@property (nonatomic) NSUInteger cardsNumber;
+// abstract protected end
 
 @property (strong, nonatomic) CardMatchingGame* game;
 

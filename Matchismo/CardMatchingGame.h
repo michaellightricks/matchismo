@@ -13,8 +13,9 @@
 
 @interface GameTurn : NSObject
 
-@property (nonatomic, strong) NSMutableArray* chosenCards;
+@property (strong, nonatomic) NSMutableArray* chosenCards;
 @property (nonatomic) NSInteger scoreDelta;
+@property (nonatomic) NSInteger score;
 
 @end
 
@@ -32,8 +33,8 @@
 
 // protected abstract end
 
-@property (readonly) BOOL started;
-@property (readonly) NSInteger score;
-@property (nonatomic, strong) NSMutableArray* turns;
+@property (readonly, nonatomic) BOOL started;
+@property (readonly, nonatomic) NSInteger score;
+@property (strong, nonatomic) NSMutableArray* turns;
 
 @end

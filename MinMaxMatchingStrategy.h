@@ -11,11 +11,11 @@
 
 @interface MinMaxMatchingStrategy : NSObject <MatchingStrategy>
 
-@property NSUInteger minCardsNumberToMatch;
-@property NSUInteger maxCardsNumberToMatch;
-
 - (instancetype) initWithMin:(NSUInteger) minCardsToMatch max:(NSUInteger) maxCardsToMatch;
 
 - (NSInteger)matchCards:(NSArray *)cards;
+
+@property (nonatomic) NSUInteger minCardsNumberToMatch;
+@property (nonatomic) NSUInteger maxCardsNumberToMatch;
 
 @end

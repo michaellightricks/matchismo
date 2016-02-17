@@ -47,7 +47,7 @@
 
 - (NSString *)contents {
   NSArray* ranks = [PlayingCard validRanks];
-  return [ranks[self.rank] stringByAppendingString:self.suite];
+  return [ranks[self.rank] stringByAppendingString:[NSString stringWithFormat:@"%@ ", self.suite]];
 }
 
 + (NSArray *)validSuits {

@@ -1,14 +1,37 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9532" systemVersion="15D21" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="Mdf-tq-Dt2">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9532" systemVersion="15D21" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="eVF-qd-olO">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9530"/>
     </dependencies>
     <scenes>
-        <!--Tab Bar Controller-->
+        <!--Navigation Controller-->
+        <scene sceneID="7vt-0M-ocJ">
+            <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="xtN-Nu-AQn" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <navigationController id="eVF-qd-olO" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="T5j-QT-TMd">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="Mdf-tq-Dt2" kind="relationship" relationship="rootViewController" id="qql-rE-aKt"/>
+                    </connections>
+                </navigationController>
+            </objects>
+            <point key="canvasLocation" x="-3543" y="168.75"/>
+        </scene>
+        <!--Games-->
         <scene sceneID="4im-Ml-HAf">
             <objects>
-                <tabBarController id="Mdf-tq-Dt2" sceneMemberID="viewController">
+                <tabBarController id="Mdf-tq-Dt2" customClass="GamesTabViewController" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" title="Games" id="5jV-H9-TuV">
+                        <barButtonItem key="rightBarButtonItem" title="History" id="2P1-h2-6Fx">
+                            <connections>
+                                <segue destination="QCg-vi-iWT" kind="show" identifier="GoToGameHistory" id="8wB-Ee-RcD"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <tabBar key="tabBar" contentMode="scaleToFill" id="JE4-ib-B9E">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="49"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -21,7 +44,49 @@
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="RpC-YP-Dsl" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-2419.5" y="110.25"/>
+            <point key="canvasLocation" x="-2440.5" y="14.25"/>
+        </scene>
+        <!--Game History View Controller-->
+        <scene sceneID="ryj-kX-AhY">
+            <objects>
+                <viewController id="QCg-vi-iWT" customClass="GameHistoryViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="L7W-6f-3wI"/>
+                        <viewControllerLayoutGuide type="bottom" id="3HR-Hj-xKh"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="ChD-Ng-xkp">
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="5qE-4a-bNk">
+                                <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                <variation key="heightClass=regular-widthClass=compact" fixedFrame="YES">
+                                    <rect key="frame" x="20" y="72" width="360" height="671"/>
+                                </variation>
+                            </textView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <variation key="default">
+                            <mask key="subviews">
+                                <exclude reference="5qE-4a-bNk"/>
+                            </mask>
+                        </variation>
+                        <variation key="heightClass=regular-widthClass=compact">
+                            <mask key="subviews">
+                                <include reference="5qE-4a-bNk"/>
+                            </mask>
+                        </variation>
+                    </view>
+                    <connections>
+                        <outlet property="historyTextView" destination="5qE-4a-bNk" id="dW0-kb-pyD"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="RpC-q1-UHT" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1605" y="14.25"/>
         </scene>
         <!--Playing Card Game-->
         <scene sceneID="tne-QT-ifu">
@@ -133,7 +198,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-733.5" y="378.75"/>
+            <point key="canvasLocation" x="-2035.5" y="698.25"/>
         </scene>
         <!--Set Game-->
         <scene sceneID="UZM-CA-yFS">
@@ -210,7 +275,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Q59-dG-vRP" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1422" y="378.75"/>
+            <point key="canvasLocation" x="-2754" y="698.25"/>
         </scene>
     </scenes>
     <resources>

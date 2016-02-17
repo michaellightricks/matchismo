@@ -24,34 +24,39 @@
 
 - (void) addButtons {
   
-  if (!_cardButtons) {
-    _cardButtons = [[NSMutableArray alloc] init];
-    int gridWidth = 5;
-    int gridHeight = 6;
-    int btnWidth = 40;
-    int btnHeight = 60;
-    
-    int startX = (self.view.frame.size.width - btnWidth * 5) / 2;
-    int startY = self.btnNew.frame.size.height;
-    
-    for (int i = 0; i < gridWidth; ++i) {
-      for (int j = 0; j < gridHeight; ++j) {
-        UIButton* btn = [UIButton buttonWithType:UIButtonTypeCustom];
-        
-        [btn setFrame:CGRectMake(startX + btnWidth * i, startY + btnHeight * j, btnWidth, btnHeight)];
-        
-        [btn addTarget:self action:@selector(touchCardbutton:) forControlEvents:UIControlEventTouchUpInside];
-        
-        [btn setBackgroundImage:[UIImage imageNamed:@"cardback"] forState:UIControlStateNormal];
-        btn.titleLabel.font = [UIFont systemFontOfSize:10];
-        [btn setTitleColor:[UIColor colorWithRed:0.0 green:0.0 blue:0.0 alpha:1.0] forState:UIControlStateNormal];
-        
-        [self.view addSubview:btn];
-        [self.cardButtons addObject:btn];
-      }
-    }
+  if (_cardButtons) {
+    return;
   }
 
+  _cardButtons = [[NSMutableArray alloc] init];
+  int gridWidth = 5;
+  int btnWidth = 40;
+  int btnHeight = 60;
+  
+  int startX = (self.view.frame.size.width - btnWidth * 5) / 2;
+  int x = 0;
+  int y = 0.5 * btnHeight;
+
+  for (int i = 0; i < self.cardsNumber; ++i) {
+    if (i % gridWidth == 0) {
+      y += btnHeight;
+      x = startX;
+    }
+    
+    UIButton* btn = [UIButton buttonWithType:UIButtonTypeCustom];
+    
+    [btn setFrame:CGRectMake(x, y, btnWidth, btnHeight)];
+    
+    [btn addTarget:self action:@selector(touchCardbutton:) forControlEvents:UIControlEventTouchUpInside];
+    
+    btn.titleLabel.font = [UIFont systemFontOfSize:10];
+    [btn setTitleColor:[UIColor colorWithRed:0.0 green:0.0 blue:0.0 alpha:1.0] forState:UIControlStateNormal];
+    
+    [self.view addSubview:btn];
+    [self.cardButtons addObject:btn];
+    
+    x += btnWidth;
+  }
 }
 
 - (CardMatchingGame *)game {

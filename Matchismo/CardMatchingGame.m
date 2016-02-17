@@ -15,9 +15,9 @@
 
 @interface CardMatchingGame()
 
-@property (nonatomic, strong) NSMutableArray *cards;
-@property (nonatomic, readwrite) NSInteger score;
-@property (nonatomic, strong) id <MatchingStrategy> matchingStrategy;
+@property (strong, nonatomic) NSMutableArray *cards;
+@property (readwrite, nonatomic) NSInteger score;
+@property (strong, nonatomic) id <MatchingStrategy> matchingStrategy;
 
 @end
 
@@ -102,15 +102,16 @@ static const int COST_TO_CHOSE = 1;
   
   turn.scoreDelta = [self.matchingStrategy matchCards:turn.chosenCards];
   turn.scoreDelta -= COST_TO_CHOSE;
- 
+
+  self.score += turn.scoreDelta;
+  turn.score = self.score;
+  
   // clone cards for history
   for (int i = 0; i < [turn.chosenCards count]; ++i) {
     turn.chosenCards[i] = [turn.chosenCards[i] clone];
   }
   
   [self.turns addObject:turn];
-  
-  self.score += turn.scoreDelta;
 }
 
 - (Card *)cardAtIndex:(NSUInteger)index {

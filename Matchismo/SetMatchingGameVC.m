@@ -11,6 +11,10 @@ NS_ASSUME_NONNULL_BEGIN
 
 @implementation SetMatchingGameVC
 
+- (NSUInteger)cardsNumber {
+  return 12;
+}
+
 + (NSArray *)colorArray {
   return @[[UIColor redColor], [UIColor greenColor], [UIColor purpleColor]];
 }

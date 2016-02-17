@@ -26,14 +26,14 @@ typedef enum setCardColors {
 
 @interface SetCard : Card
 
+- (instancetype) initWithOther:(SetCard *) other;
+
 +(NSUInteger) maxRank;
 +(NSArray *) validSymbols;
 
-- (instancetype) initWithOther:(SetCard *) other;
-
 @property (nonatomic) SetCardShading shading;
 @property (nonatomic) SetCardColor color;
-@property (nonatomic, strong) NSString* symbol;
+@property (strong, nonatomic) NSString* symbol;
 @property (nonatomic) NSUInteger rank;
 
 @end
