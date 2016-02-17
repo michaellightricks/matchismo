@@ -23,9 +23,6 @@ NS_ASSUME_NONNULL_BEGIN
  
   SetCard* myCard = (SetCard *)card;
   NSString* content = [NSString stringWithFormat:@"%lu%@", (unsigned long)myCard.rank, myCard.symbol];
-//  for (int i = 0; i < myCard.rank-1; ++i) {
-//    content = [NSString stringWithFormat:@"%@\n%@", content, myCard.symbol];
-//  }
 
   NSRange range = NSMakeRange(0, [content length]);
   
