@@ -15,13 +15,18 @@ typedef struct cardMatchStatisticsType {
 
 @implementation SetMatchingStrategy
 
-- (NSInteger)matchCards:(NSArray *)cards {
+- (NSInteger)matchCard:(Card *)card withOtherCards:(NSArray *)otherCards {
 
   // we will count card properties that are equal
   // if at the end max count for each property is _cards_count_ or 0
   // we have set (_cards_count_ all cards are equal 0 are different)
   
   NSInteger scoreDelta = 0;
+  
+  NSMutableArray* cards = [[NSMutableArray alloc] init];
+  
+  [cards addObjectsFromArray:otherCards];
+  [cards addObject:card];
   
   if ([cards count] == 3) {
     

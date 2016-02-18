@@ -9,6 +9,8 @@
 #import "CardMatchingGame.h"
 #import "MinMaxMatchingStrategy.h"
 
+NS_ASSUME_NONNULL_BEGIN
+
 @implementation GameTurn
 
 @end
@@ -98,9 +100,8 @@ static const int COST_TO_CHOSE = 1;
   }
   
   card.chosen = YES;
-  [turn.chosenCards addObject:card];
   
-  turn.scoreDelta = [self.matchingStrategy matchCards:turn.chosenCards];
+  turn.scoreDelta = [self.matchingStrategy matchCard:card withOtherCards:turn.chosenCards];
   turn.scoreDelta -= COST_TO_CHOSE;
 
   self.score += turn.scoreDelta;
@@ -111,6 +112,8 @@ static const int COST_TO_CHOSE = 1;
     turn.chosenCards[i] = [turn.chosenCards[i] clone];
   }
   
+  [turn.chosenCards addObject:[card clone]];
+  
   [self.turns addObject:turn];
 }
 
@@ -119,3 +122,5 @@ static const int COST_TO_CHOSE = 1;
 }
 
 @end
+
+NS_ASSUME_NONNULL_END

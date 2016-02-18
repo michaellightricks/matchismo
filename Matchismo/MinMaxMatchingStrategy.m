@@ -9,6 +9,8 @@
 #import "MinMaxMatchingStrategy.h"
 #import "PlayingCard.h"
 
+NS_ASSUME_NONNULL_BEGIN
+
 @implementation MinMaxMatchingStrategy
 
 static const int MISMATCH_PENALTY = 2;
@@ -25,12 +27,16 @@ static const int MATCH_BONUS = 4;
   return self;
 }
 
-- (NSInteger)matchCards:(NSArray *)cards {
+- (NSInteger)matchCard:(Card *)card withOtherCards:(NSArray *)otherCards {
+
   NSInteger scoreDelta = 0;
 
-  Card* lastCard = (Card*)cards.lastObject;
-  lastCard.chosen = YES;
+  NSMutableArray* cards = [[NSMutableArray alloc] init];
+                           
+  [cards addObjectsFromArray:otherCards];
+  [cards addObject:card];
   
+  card.chosen = YES;
   if ([cards count] != (self.maxCardsNumberToMatch)) {
     return scoreDelta;
   }
@@ -55,7 +61,7 @@ static const int MATCH_BONUS = 4;
   else {
     scoreDelta -= MISMATCH_PENALTY;
     for (Card *c in cards) {
-      if (c != lastCard) {
+      if (c != card) {
         c.chosen = NO;
       }
     }
@@ -79,3 +85,5 @@ static const int MATCH_BONUS = 4;
 }
 
 @end
+   
+NS_ASSUME_NONNULL_END

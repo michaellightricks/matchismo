@@ -11,6 +11,6 @@
 
 @protocol MatchingStrategy <NSObject>
 
-- (NSInteger)matchCards:(NSArray *)cards;
+- (NSInteger)matchCard:(Card *)card withOtherCards:(NSArray *)cards;
 
 @end

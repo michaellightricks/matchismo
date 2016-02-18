@@ -9,13 +9,17 @@
 #import <Foundation/Foundation.h>
 #import "MatchingStrategy.h"
 
+NS_ASSUME_NONNULL_BEGIN
+
 @interface MinMaxMatchingStrategy : NSObject <MatchingStrategy>
 
 - (instancetype) initWithMin:(NSUInteger) minCardsToMatch max:(NSUInteger) maxCardsToMatch;
 
-- (NSInteger)matchCards:(NSArray *)cards;
+- (NSInteger)matchCard:(Card *)card withOtherCards:(NSArray *)cards;
 
 @property (nonatomic) NSUInteger minCardsNumberToMatch;
 @property (nonatomic) NSUInteger maxCardsNumberToMatch;
 
 @end
+
+NS_ASSUME_NONNULL_END

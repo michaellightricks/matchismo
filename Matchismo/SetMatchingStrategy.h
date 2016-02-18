@@ -7,7 +7,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface SetMatchingStrategy : NSObject <MatchingStrategy>
 
-- (NSInteger)matchCards:(NSArray *)cards;
+- (NSInteger)matchCard:(Card *)card withOtherCards:(NSArray *)otherCards;
 
 @end
 
