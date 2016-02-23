@@ -15,12 +15,8 @@
   return 3;
 }
 
-+(NSArray *)validSymbols {
-  return @[@"▲", @"●", @"■"];
-}
-
 - (NSString*)contents {
-  return [NSString stringWithFormat:@"%lu%@%d%d", (unsigned long)self.rank, self.symbol, self.shading, self.color];
+  return [NSString stringWithFormat:@"%lu%d%d%d", (unsigned long)self.rank, (int)self.symbol, self.shading, self.color];
 }
 
 - (instancetype)initWithOther:(SetCard *) other {

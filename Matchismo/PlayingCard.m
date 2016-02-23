@@ -51,7 +51,7 @@
 }
 
 + (NSArray *)validSuits {
-  NSArray *result = @[@"♠️", @"♣️", @"♥️", @"♦️"];
+  NSArray *result = @[@"♠", @"♣", @"♥", @"♦"];//@[@"♠️", @"♣️", @"♥️", @"♦️"];
   return result;
 }
 

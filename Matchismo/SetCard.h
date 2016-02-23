@@ -8,14 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import "Card.h"
-
-
-typedef enum setCardShadings {
-  SHADING_SOLID,
-  SHADING_STRIPED,
-  SHADING_OPEN,
-  SHADING_MAX
-} SetCardShading;
+#import "SetDefinitions.h"
 
 typedef enum setCardColors {
   COLORS_RED,
@@ -29,11 +22,10 @@ typedef enum setCardColors {
 - (instancetype) initWithOther:(SetCard *) other;
 
 +(NSUInteger) maxRank;
-+(NSArray *) validSymbols;
 
 @property (nonatomic) SetCardShading shading;
 @property (nonatomic) SetCardColor color;
-@property (strong, nonatomic) NSString* symbol;
+@property (nonatomic) SetCardSymbol symbol;
 @property (nonatomic) NSUInteger rank;
 
 @end

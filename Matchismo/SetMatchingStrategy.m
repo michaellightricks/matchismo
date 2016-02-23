@@ -44,7 +44,7 @@ typedef struct cardMatchStatisticsType {
 
         stats[0].equalsCount += (card.rank == other.rank);
         stats[1].equalsCount += (card.shading == other.shading);
-        stats[2].equalsCount += ([card.symbol isEqualToString:other.symbol]);
+        stats[2].equalsCount += (card.symbol == other.symbol);
         stats[3].equalsCount += (card.color == other.color);
       }
       

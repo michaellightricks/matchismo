@@ -7,7 +7,12 @@
 #import "SetMatchingGame.h"
 #import "SetCard.h"
 
+#import "PlayingCardView.h"
+
 NS_ASSUME_NONNULL_BEGIN
+
+@interface SetMatchingGameVC()
+@end
 
 @implementation SetMatchingGameVC
 
@@ -26,7 +31,7 @@ NS_ASSUME_NONNULL_BEGIN
 - (NSAttributedString *)getTitleForCard:(Card *)card {
  
   SetCard* myCard = (SetCard *)card;
-  NSString* content = [NSString stringWithFormat:@"%lu%@", (unsigned long)myCard.rank, myCard.symbol];
+  NSString* content = [NSString stringWithFormat:@"%lu%d", (unsigned long)myCard.rank, myCard.symbol];
 
   NSRange range = NSMakeRange(0, [content length]);
   

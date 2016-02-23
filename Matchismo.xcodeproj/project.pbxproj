@@ -28,6 +28,9 @@
 		648CBCFA1C6C898D00F4A9A1 /* MinMaxMatchingStrategy.m in Sources */ = {isa = PBXBuildFile; fileRef = 648CBCF91C6C898D00F4A9A1 /* MinMaxMatchingStrategy.m */; };
 		64DCB4701C7206B100AA116C /* SetCard.m in Sources */ = {isa = PBXBuildFile; fileRef = 64DCB46F1C7206B100AA116C /* SetCard.m */; };
 		64DCB4731C7206C100AA116C /* SetDeck.m in Sources */ = {isa = PBXBuildFile; fileRef = 64DCB4721C7206C100AA116C /* SetDeck.m */; };
+		64EDA03B1C762E020067A06B /* CardView.m in Sources */ = {isa = PBXBuildFile; fileRef = 64EDA03A1C762E020067A06B /* CardView.m */; };
+		64EDA03F1C79E0950067A06B /* PlayingCardView.m in Sources */ = {isa = PBXBuildFile; fileRef = 64EDA03E1C79E0950067A06B /* PlayingCardView.m */; };
+		64EDA0421C7B5B800067A06B /* SetCardView.m in Sources */ = {isa = PBXBuildFile; fileRef = 64EDA0411C7B5B800067A06B /* SetCardView.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -72,6 +75,13 @@
 		64DCB46F1C7206B100AA116C /* SetCard.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SetCard.m; sourceTree = "<group>"; };
 		64DCB4711C7206C100AA116C /* SetDeck.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SetDeck.h; sourceTree = "<group>"; };
 		64DCB4721C7206C100AA116C /* SetDeck.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SetDeck.m; sourceTree = "<group>"; };
+		64EDA0391C762E020067A06B /* CardView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CardView.h; sourceTree = "<group>"; };
+		64EDA03A1C762E020067A06B /* CardView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CardView.m; sourceTree = "<group>"; };
+		64EDA03D1C79E0950067A06B /* PlayingCardView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlayingCardView.h; sourceTree = "<group>"; };
+		64EDA03E1C79E0950067A06B /* PlayingCardView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlayingCardView.m; sourceTree = "<group>"; };
+		64EDA0401C7B5B800067A06B /* SetCardView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SetCardView.h; sourceTree = "<group>"; };
+		64EDA0411C7B5B800067A06B /* SetCardView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SetCardView.m; sourceTree = "<group>"; };
+		64EDA0441C7B5FD10067A06B /* SetDefinitions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SetDefinitions.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -104,21 +114,14 @@
 		6406E1D21C6A4AEF003762B2 /* Matchismo */ = {
 			isa = PBXGroup;
 			children = (
+				64EDA03C1C79DD320067A06B /* ViewControl */,
+				64EDA0381C762DEB0067A06B /* View */,
+				648CBCF51C6B68E600F4A9A1 /* Model */,
 				6406E1D61C6A4AEF003762B2 /* AppDelegate.h */,
 				6406E1D71C6A4AEF003762B2 /* AppDelegate.m */,
-				647A5B9A1C747F2100CB6C14 /* GamesTabViewController.h */,
-				647A5B9B1C747F2100CB6C14 /* GamesTabViewController.m */,
-				6406E1D91C6A4AEF003762B2 /* MatchingGameViewController.h */,
-				6406E1DA1C6A4AEF003762B2 /* MatchingGameViewController.m */,
-				647A5B911C7317F500CB6C14 /* PlayingCardsMatchingGameVC.h */,
-				647A5B921C7317F500CB6C14 /* PlayingCardsMatchingGameVC.m */,
-				647A5B941C731F3600CB6C14 /* SetMatchingGameVC.h */,
-				647A5B951C731F3600CB6C14 /* SetMatchingGameVC.m */,
-				647A5B971C7374DE00CB6C14 /* GameHistoryViewController.h */,
-				647A5B981C7374DE00CB6C14 /* GameHistoryViewController.m */,
+				64EDA0441C7B5FD10067A06B /* SetDefinitions.h */,
 				6406E1DC1C6A4AEF003762B2 /* Main.storyboard */,
 				6406E1DF1C6A4AEF003762B2 /* Assets.xcassets */,
-				648CBCF51C6B68E600F4A9A1 /* Model */,
 				6406E1E11C6A4AEF003762B2 /* LaunchScreen.storyboard */,
 				6406E1E41C6A4AEF003762B2 /* Info.plist */,
 				6406E1D31C6A4AEF003762B2 /* Supporting Files */,
@@ -178,6 +181,36 @@
 				647A5B8F1C73140D00CB6C14 /* SetMatchingGame.m */,
 			);
 			name = SetCards;
+			sourceTree = "<group>";
+		};
+		64EDA0381C762DEB0067A06B /* View */ = {
+			isa = PBXGroup;
+			children = (
+				64EDA0391C762E020067A06B /* CardView.h */,
+				64EDA03A1C762E020067A06B /* CardView.m */,
+				64EDA03D1C79E0950067A06B /* PlayingCardView.h */,
+				64EDA03E1C79E0950067A06B /* PlayingCardView.m */,
+				64EDA0401C7B5B800067A06B /* SetCardView.h */,
+				64EDA0411C7B5B800067A06B /* SetCardView.m */,
+			);
+			name = View;
+			sourceTree = "<group>";
+		};
+		64EDA03C1C79DD320067A06B /* ViewControl */ = {
+			isa = PBXGroup;
+			children = (
+				647A5B9A1C747F2100CB6C14 /* GamesTabViewController.h */,
+				647A5B9B1C747F2100CB6C14 /* GamesTabViewController.m */,
+				6406E1D91C6A4AEF003762B2 /* MatchingGameViewController.h */,
+				6406E1DA1C6A4AEF003762B2 /* MatchingGameViewController.m */,
+				647A5B911C7317F500CB6C14 /* PlayingCardsMatchingGameVC.h */,
+				647A5B921C7317F500CB6C14 /* PlayingCardsMatchingGameVC.m */,
+				647A5B941C731F3600CB6C14 /* SetMatchingGameVC.h */,
+				647A5B951C731F3600CB6C14 /* SetMatchingGameVC.m */,
+				647A5B971C7374DE00CB6C14 /* GameHistoryViewController.h */,
+				647A5B981C7374DE00CB6C14 /* GameHistoryViewController.m */,
+			);
+			name = ViewControl;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -259,7 +292,10 @@
 				6406E1F11C6B3D1F003762B2 /* Deck.m in Sources */,
 				6406E1DB1C6A4AEF003762B2 /* MatchingGameViewController.m in Sources */,
 				647A5B8D1C72333400CB6C14 /* PlayingCardMatchingGame.m in Sources */,
+				64EDA03F1C79E0950067A06B /* PlayingCardView.m in Sources */,
+				64EDA03B1C762E020067A06B /* CardView.m in Sources */,
 				647A5B961C731F3600CB6C14 /* SetMatchingGameVC.m in Sources */,
+				64EDA0421C7B5B800067A06B /* SetCardView.m in Sources */,
 				64DCB4701C7206B100AA116C /* SetCard.m in Sources */,
 				6406E1D81C6A4AEF003762B2 /* AppDelegate.m in Sources */,
 				647A5B9C1C747F2100CB6C14 /* GamesTabViewController.m in Sources */,

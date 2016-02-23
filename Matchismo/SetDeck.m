@@ -20,7 +20,7 @@ NS_ASSUME_NONNULL_BEGIN
   {
     for (NSUInteger rank = 1; rank <= [SetCard maxRank]; ++rank) {
       for (SetCardColor color = 0; color < COLORS_MAX; ++color) {
-        for (NSString* symbol in [SetCard validSymbols]) {
+        for (SetCardSymbol symbol = 0; symbol < SYMBOL_MAX; ++symbol) {
           for (SetCardShading shading = 0; shading < SHADING_MAX; ++shading) {
             SetCard* card = [[SetCard alloc] init];
             card.rank = rank;
