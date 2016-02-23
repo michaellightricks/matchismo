@@ -7,7 +7,7 @@
 #import "SetMatchingGame.h"
 #import "SetCard.h"
 
-#import "PlayingCardView.h"
+#import "SetCardView.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -64,6 +64,20 @@ NS_ASSUME_NONNULL_BEGIN
 
 - (UIImage *)getImageForCard:(Card *)card {
   return [UIImage imageNamed: card.isChosen ? @"setcardchosen" : @"setcard"];
+}
+
+- (CardView *)createCardView:(Card *)card {
+  
+  SetCard *setCard = (SetCard *)card;
+  
+  SetCardView *result = [[SetCardView alloc] init];
+
+  result.rank = setCard.rank;
+  result.symbol = setCard.symbol;
+  result.color = [SetMatchingGameVC colorArray][setCard.color];
+  result.shading = setCard.shading;
+  
+  return result;
 }
 
 @end

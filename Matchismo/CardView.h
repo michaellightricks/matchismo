@@ -6,11 +6,12 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface CardView : UIView
+@interface CardView : UIControl
 
 - (float)cornerScaleFactor;
 - (float)cornerRadius;
 - (void)popContext;
+- (void)onTap:(UITapGestureRecognizer *)recognizer;
 
 @end
 

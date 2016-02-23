@@ -9,8 +9,6 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface SetCardView : CardView
 
-@property (nonatomic) BOOL selected;
-
 @property (nonatomic) SetCardShading shading;
 @property (nonatomic) UIColor* color;
 @property (nonatomic) SetCardSymbol symbol;

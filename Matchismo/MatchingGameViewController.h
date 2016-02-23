@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "CardMatchingGame.h"
-
+#import "CardView.h"
 @protocol TurnTitleProvider <NSObject>
 
 - (NSAttributedString*)getTurnStatus:(GameTurn *) turn;
@@ -18,6 +18,7 @@
 @interface MatchingGameViewController : UIViewController <TurnTitleProvider>
 
 - (CardMatchingGame *)createGame:(NSUInteger)cardsCount;
+- (CardView *)createCardView:(Card *)card;
 - (void)updateUI;
 - (NSAttributedString *)getTitleForCard:(Card *)card;
 - (UIImage *)getImageForCard:(Card *)card;

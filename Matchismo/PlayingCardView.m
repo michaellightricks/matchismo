@@ -12,9 +12,6 @@ NS_ASSUME_NONNULL_BEGIN
 - (void)drawRect:(CGRect)rect {
   [super drawRect:rect];
   
-  self.rank = 7;
-  self.suit = @"♦";//@"♦️";
-  self.faceUp = YES;
   if (self.faceUp) {
     [self drawCorners];
     [self drawFace];
@@ -55,7 +52,7 @@ NS_ASSUME_NONNULL_BEGIN
 }
 
 - (void)drawFace {
-  NSString* imageString = [NSString stringWithFormat:@"%@%@.jpg", [self rankAsString], self.suit];
+  NSString* imageString = [NSString stringWithFormat:@"%@%@.jpg", [self rankAsString], self.suite];
   
   UIImage *faceImage = [UIImage imageNamed:imageString];
   
@@ -135,7 +132,7 @@ NS_ASSUME_NONNULL_BEGIN
   if (upsideDown) [self pushContextAndRotateUpsideDown];
   CGPoint middle = CGPointMake(self.bounds.size.width/2, self.bounds.size.height/2);
   UIFont *pipFont = [UIFont systemFontOfSize:self.bounds.size.width * PIP_FONT_SCALE_FACTOR];
-  NSAttributedString *attributedSuit = [[NSAttributedString alloc] initWithString:self.suit attributes:@{ NSFontAttributeName : pipFont }];
+  NSAttributedString *attributedSuit = [[NSAttributedString alloc] initWithString:self.suite attributes:@{ NSFontAttributeName : pipFont }];
   CGSize pipSize = [attributedSuit size];
   CGPoint pipOrigin = CGPointMake(
                                   middle.x-pipSize.width/2.0-hoffset*self.bounds.size.width,
@@ -174,11 +171,11 @@ NS_ASSUME_NONNULL_BEGIN
 }
 
 - (NSString*)cardString {
-  return [NSString stringWithFormat:@"%@\n%@", [self rankAsString], self.suit];
+  return [NSString stringWithFormat:@"%@\n%@", [self rankAsString], self.suite];
 }
 
-- (void)setSuit:(NSString *)suit {
-  _suit = suit;
+- (void)setSuite:(NSString *)suite {
+  _suite = suite;
   
   [self setNeedsDisplay];
 }
@@ -191,7 +188,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 - (void)setFaceUp:(BOOL)faceUp {
   _faceUp = faceUp;
-  
+
   [self setNeedsDisplay];
 }
 

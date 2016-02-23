@@ -3,6 +3,8 @@
 
 #import "PlayingCardsMatchingGameVC.h"
 #import "PlayingCardMatchingGame.h"
+#import "PlayingCard.h"
+#import "PlayingCardView.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -41,6 +43,16 @@ static const int MAX_MATCH_NUMBERS[] = {2, 3};
 
 - (UIImage *)getImageForCard:(Card *)card {
   return [UIImage imageNamed: card.isChosen ? @"cardfront" : @"cardback"];
+}
+
+- (CardView *)createCardView:(Card *)card {
+  PlayingCard *playingCard = (PlayingCard *)card;
+  
+  PlayingCardView *result = [[PlayingCardView alloc] init];
+  result.rank = playingCard.rank;
+  result.suite = playingCard.suite;
+  
+  return result;
 }
 
 @end

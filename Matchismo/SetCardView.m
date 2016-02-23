@@ -15,11 +15,6 @@ NS_ASSUME_NONNULL_BEGIN
   
   [super drawRect:rect];
 
-  self.symbol = SYMBOL_SQUIGGLE;
-  self.shading = SHADING_STRIPED;
-  self.color = [UIColor greenColor];
-  self.rank = 3;
-  
   float symbolWidth = [self bounds].size.width * SYMBOL_SIZE_FACTOR;
   float symbolHeight = [self bounds].size.height * SYMBOL_SIZE_FACTOR / MAX_RANK;
   
@@ -184,12 +179,6 @@ NS_ASSUME_NONNULL_BEGIN
 
 - (void)setColor:(UIColor *)color {
   _color = color;
-  
-  [self setNeedsDisplay];
-}
-
-- (void)setSelected:(BOOL)selected {
-  _selected = selected;
   
   [self setNeedsDisplay];
 }

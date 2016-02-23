@@ -35,6 +35,14 @@ NS_ASSUME_NONNULL_BEGIN
   self.opaque = NO;
   self.contentMode = UIViewContentModeRedraw;
  
+  
+  UITapGestureRecognizer* tapRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(onTap:)];
+  
+  [self addGestureRecognizer:tapRecognizer];
+}
+
+- (void)onTap:(UITapGestureRecognizer *)recognizer {
+  assert(0);
 }
 
 - (void)awakeFromNib {

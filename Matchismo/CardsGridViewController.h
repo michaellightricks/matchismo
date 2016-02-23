@@ -2,15 +2,17 @@
 // Created by Michael Kupchick.
 
 #import <Foundation/Foundation.h>
+#import <UIKit/UIKit.h>
+
 #import "CardView.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface PlayingCardView : CardView
+@interface CardsGridViewController : UIViewController
 
-@property (nonatomic) NSUInteger rank;
-@property (nonatomic) NSString* suite;
-@property (nonatomic) BOOL faceUp;
+- (void)addCardView:(CardView *)cardView;
+
+@property (nonatomic) NSUInteger minCellsNumber;
 
 @end
 
