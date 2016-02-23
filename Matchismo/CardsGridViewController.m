@@ -26,7 +26,7 @@ NS_ASSUME_NONNULL_BEGIN
   
   self.grid = [[Grid alloc] init];
   self.grid.size = self.view.bounds.size;
-  self.grid.minimumNumberOfCells = self.minCellsNumber; // TODO: 12?
+  self.grid.minimumNumberOfCells = self.minCellsNumber;
   self.grid.cellAspectRatio = 2.0 / 3.0;
   [self updateViews];
 }
