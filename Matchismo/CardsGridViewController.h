@@ -12,6 +12,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 - (void)addCardView:(CardView *)cardView;
 
+- (void) dealCards;
+
 @property (nonatomic) NSUInteger minCellsNumber;
 
 @end

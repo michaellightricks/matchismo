@@ -33,6 +33,8 @@
 		64EDA0421C7B5B800067A06B /* SetCardView.m in Sources */ = {isa = PBXBuildFile; fileRef = 64EDA0411C7B5B800067A06B /* SetCardView.m */; };
 		64EDA04C1C7CA15E0067A06B /* Grid.m in Sources */ = {isa = PBXBuildFile; fileRef = 64EDA04B1C7CA15E0067A06B /* Grid.m */; };
 		64EDA04F1C7CA2CD0067A06B /* CardsGridViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 64EDA04E1C7CA2CD0067A06B /* CardsGridViewController.m */; };
+		64EDA0521C7DD5330067A06B /* AnimationQueue.m in Sources */ = {isa = PBXBuildFile; fileRef = 64EDA0511C7DD5330067A06B /* AnimationQueue.m */; };
+		64EDA0551C7DE3030067A06B /* AnimationQueueItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 64EDA0541C7DE3030067A06B /* AnimationQueueItem.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -88,6 +90,10 @@
 		64EDA04B1C7CA15E0067A06B /* Grid.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Grid.m; sourceTree = "<group>"; };
 		64EDA04D1C7CA2CD0067A06B /* CardsGridViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CardsGridViewController.h; sourceTree = "<group>"; };
 		64EDA04E1C7CA2CD0067A06B /* CardsGridViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CardsGridViewController.m; sourceTree = "<group>"; };
+		64EDA0501C7DD5330067A06B /* AnimationQueue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AnimationQueue.h; sourceTree = "<group>"; };
+		64EDA0511C7DD5330067A06B /* AnimationQueue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AnimationQueue.m; sourceTree = "<group>"; };
+		64EDA0531C7DE3030067A06B /* AnimationQueueItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AnimationQueueItem.h; sourceTree = "<group>"; };
+		64EDA0541C7DE3030067A06B /* AnimationQueueItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AnimationQueueItem.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -219,6 +225,10 @@
 				647A5B981C7374DE00CB6C14 /* GameHistoryViewController.m */,
 				64EDA04D1C7CA2CD0067A06B /* CardsGridViewController.h */,
 				64EDA04E1C7CA2CD0067A06B /* CardsGridViewController.m */,
+				64EDA0501C7DD5330067A06B /* AnimationQueue.h */,
+				64EDA0511C7DD5330067A06B /* AnimationQueue.m */,
+				64EDA0531C7DE3030067A06B /* AnimationQueueItem.h */,
+				64EDA0541C7DE3030067A06B /* AnimationQueueItem.m */,
 			);
 			name = ViewControl;
 			sourceTree = "<group>";
@@ -293,6 +303,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				64EDA0521C7DD5330067A06B /* AnimationQueue.m in Sources */,
 				647A5B931C7317F500CB6C14 /* PlayingCardsMatchingGameVC.m in Sources */,
 				648CBCFA1C6C898D00F4A9A1 /* MinMaxMatchingStrategy.m in Sources */,
 				647A5B901C73140D00CB6C14 /* SetMatchingGame.m in Sources */,
@@ -309,6 +320,7 @@
 				64EDA0421C7B5B800067A06B /* SetCardView.m in Sources */,
 				64DCB4701C7206B100AA116C /* SetCard.m in Sources */,
 				6406E1D81C6A4AEF003762B2 /* AppDelegate.m in Sources */,
+				64EDA0551C7DE3030067A06B /* AnimationQueueItem.m in Sources */,
 				647A5B9C1C747F2100CB6C14 /* GamesTabViewController.m in Sources */,
 				64EDA04C1C7CA15E0067A06B /* Grid.m in Sources */,
 				648CBCF31C6B68B200F4A9A1 /* CardMatchingGame.m in Sources */,

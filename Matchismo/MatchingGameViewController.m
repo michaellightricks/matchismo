@@ -27,10 +27,17 @@
   
   for (int i = 0; i < self.cardsNumber; ++i) {
     Card* card = [self.game cardAtIndex:i];
-    
-    CardView *cardView = [self createCardView:card];
-    [self.cardsGridVC addCardView:cardView];
+    [self addCardView:card];
   }
+}
+
+- (CardView *)addCardView:(Card *)card {
+
+  CardView *cardView = [self createCardView:card];
+  [cardView addTarget:self action:@selector(touchCardbutton:) forControlEvents:UIControlEventTouchUpInside];
+  [self.cardsGridVC addCardView:cardView];
+
+  return cardView;
 }
 
 - (CardView *)createCardView:(Card *)card {
@@ -38,8 +45,14 @@
   return nil;
 }
 
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
-{
+- (void)viewDidAppear:(BOOL)animated {
+
+  [super viewDidAppear:animated];
+  
+  [self.cardsGridVC dealCards];
+}
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
   if ([segue.identifier isEqualToString:@"CardsGridSegue"]) {
     self.cardsGridVC = (CardsGridViewController *)segue.destinationViewController;
     self.cardsGridVC.minCellsNumber = self.cardsNumber;
@@ -82,9 +95,11 @@
 
 - (void)resetGame {
   _game = nil;
+  
+  [self.cardsGridVC dealCards];
 }
 
-- (IBAction)touchCardbutton:(UIButton *)sender {
+- (IBAction)touchCardbutton:(CardView *)sender {
   NSUInteger index = 0;//[self.cardButtons indexOfObject:sender];
   [self.game chooseCardAtIndex:index];
   [self updateUI];
@@ -92,14 +107,6 @@
 
 - (void)updateUI
 {
-//  for (UIButton* btn in self.cardButtons) {
-//    Card *card = [self.game cardAtIndex:[self.cardButtons indexOfObject:btn]];
-//    [btn setAttributedTitle:[self getTitleForCard:card] forState:UIControlStateNormal];
-//    [btn setBackgroundImage:[self getImageForCard:card] forState:UIControlStateNormal];
-//
-//    btn.enabled = !card.isMatched;
-//  }
-  
   self.descLabel.attributedText = [self getTurnStatus:self.game.turns.lastObject];
   self.scoreLabel.text = [NSString stringWithFormat:@"Score: %ld",(long)self.game.score];
 }
