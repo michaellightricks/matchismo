@@ -17,9 +17,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface CardMatchingGame()
 
-@property (strong, nonatomic) NSMutableArray *cards;
 @property (readwrite, nonatomic) NSInteger score;
-@property (strong, nonatomic) id <MatchingStrategy> matchingStrategy;
+@property (nonatomic) id <MatchingStrategy> matchingStrategy;
 
 @end
 
@@ -56,9 +55,9 @@ static const int COST_TO_CHOSE = 1;
   if (self) {
    
     _started = NO;
-    Deck *deck = [self createDeck];
+    _deck = [self createDeck];
     for (int i = 0; i < count; ++i) {
-      Card *card = [deck drawRandomCard];
+      Card *card = [self.deck drawRandomCard];
       if (card)  {
         card.index = i;
         [self.cards addObject:card];

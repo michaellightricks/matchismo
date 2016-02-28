@@ -6,7 +6,7 @@
 #import "SetMatchingGameVC.h"
 #import "SetMatchingGame.h"
 #import "SetCard.h"
-
+#import "Card.h"
 #import "SetCardView.h"
 
 NS_ASSUME_NONNULL_BEGIN
@@ -16,7 +16,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @implementation SetMatchingGameVC
 
-- (NSUInteger)cardsNumber {
+- (NSUInteger)initialCardsNumber {
   return 12;
 }
 
@@ -62,6 +62,18 @@ NS_ASSUME_NONNULL_BEGIN
   return result;
 }
 
+- (IBAction)touchMore:(id)sender {
+  SetMatchingGame *setGame = (SetMatchingGame *)self.game;
+  
+  NSArray *newCards = [setGame addNewSet];
+  
+  self.cardsGridVC.minCellsNumber += [newCards count];
+  
+  for (Card *card in newCards) {
+    [self addCardView:card withIndex:card.index];
+  }
+}
+
 - (UIImage *)getImageForCard:(Card *)card {
   return [UIImage imageNamed: card.isChosen ? @"setcardchosen" : @"setcard"];
 }
@@ -80,9 +92,8 @@ NS_ASSUME_NONNULL_BEGIN
   return result;
 }
 
-- (void)onCardChanged:(NSUInteger)cardIndex {
-  SetCardView *setCardView = (SetCardView *)[self.cardsGridVC getCardViewAt:cardIndex];
-  SetCard *card = (SetCard *)[self.game cardAtIndex:setCardView.tag];
+- (void)onCardChanged:(Card *)card {
+  SetCardView *setCardView = (SetCardView *)[self.cardsGridVC getCardViewAt:card.index];
 
   if (setCardView.chosen == card.isChosen) {
     return;

@@ -308,6 +308,7 @@
                                 </variation>
                                 <connections>
                                     <action selector="touchNew:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Ulz-gU-DPq"/>
+                                    <action selector="touchNew:" destination="uxX-7u-h6Z" eventType="touchUpInside" id="WBz-6Q-309"/>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NAC-8D-E8w">
@@ -368,6 +369,9 @@
                                     <constraint firstAttribute="width" constant="46" id="K2j-qv-agt"/>
                                 </constraints>
                                 <state key="normal" title="More" backgroundImage="cardfront"/>
+                                <connections>
+                                    <action selector="touchMore:" destination="uxX-7u-h6Z" eventType="touchUpInside" id="zON-Xa-0EQ"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" red="0.0" green="0.50196081400000003" blue="0.25098040700000002" alpha="1" colorSpace="calibratedRGB"/>
@@ -392,7 +396,7 @@
                     </view>
                     <tabBarItem key="tabBarItem" title="Set Game" id="Ytt-im-Plm" userLabel="Set Game"/>
                     <connections>
-                        <outlet property="btnNew" destination="W2B-Q4-6ic" id="g3B-gG-S6a"/>
+                        <outlet property="btnNew" destination="W2B-Q4-6ic" id="Jsq-lp-51U"/>
                         <outlet property="descLabel" destination="NAC-8D-E8w" id="eco-i1-IGd"/>
                         <outlet property="scoreLabel" destination="WIA-TA-gTK" id="DhL-ty-PQh"/>
                     </connections>

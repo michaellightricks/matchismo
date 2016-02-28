@@ -8,6 +8,9 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface SetMatchingGame : CardMatchingGame
 
+// returns array with new cards
+- (NSArray *)addNewSet;
+
 @end
 
 NS_ASSUME_NONNULL_END

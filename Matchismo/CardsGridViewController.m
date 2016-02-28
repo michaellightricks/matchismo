@@ -26,6 +26,12 @@ NS_ASSUME_NONNULL_BEGIN
 
 #define ITEM_MARGIN_SIZE (2)
 
+- (void)setMinCellsNumber:(NSUInteger)value {
+  _minCellsNumber = value;
+  
+  [self updateViews];
+}
+
 - (NSMutableSet *)animatedViews {
   if (!_animatedViews) {
     _animatedViews = [[NSMutableSet alloc] init];
@@ -41,7 +47,6 @@ NS_ASSUME_NONNULL_BEGIN
   
   self.grid = [[Grid alloc] init];
   self.grid.size = self.view.bounds.size;
-  self.grid.minimumNumberOfCells = self.minCellsNumber;
   self.grid.cellAspectRatio = 2.0 / 3.0;
   
   [self updateViews];
@@ -65,6 +70,12 @@ NS_ASSUME_NONNULL_BEGIN
 }
 
 - (void)removeCardViews:(NSArray *)indices {
+  NSArray *removed = [self removeCardViewsInternal:indices];
+  
+  [self addRemoveAnimation:removed];
+}
+
+- (NSArray *)removeCardViewsInternal:(NSArray *)indices{
 
   indices = [indices sortedArrayUsingSelector:@selector(compare:)];
 
@@ -77,7 +88,7 @@ NS_ASSUME_NONNULL_BEGIN
     [self.cardViewsArray removeObjectAtIndex:integerIdx];
   }
   
-  [self addRemoveAnimation:removed];
+  return removed;
 }
 
 - (void)addRemoveAnimation:(NSArray *)cardViews {
@@ -85,12 +96,12 @@ NS_ASSUME_NONNULL_BEGIN
   __weak CardsGridViewController *weakSelf = self;
   
   AnimationQueueItemSimple *item = [[AnimationQueueItemSimple alloc] init];
-  
   item.duration = 0.2;
-  item.delay = 1.0;
+  item.delay = 0.5;
   item.animation = ^{
     for (CardView *cardView in cardViews) {
-      cardView.frame = CGRectInset(cardView.frame, cardView.frame.size.width / 2 - 1, cardView.frame.size.height / 2 - 1);
+      cardView.frame = CGRectMake(weakSelf.view.bounds.size.width,
+                                  weakSelf.view.bounds.size.height, cardView.frame.size.width, cardView.frame.size.height);
     }
   };
   item.beforeAnimation = nil;
@@ -108,6 +119,8 @@ NS_ASSUME_NONNULL_BEGIN
 - (void)updateViews {
   if (!_grid)
     return;
+  
+  self.grid.minimumNumberOfCells = self.minCellsNumber;
   
   for (int i = 0; i < [self.cardViewsArray count]; ++i) {
 
@@ -165,10 +178,11 @@ NS_ASSUME_NONNULL_BEGIN
 - (void)clear {
   [self clearAnimations];
  
-  while ([self.cardViewsArray count] > 0) {
-    NSNumber *index = [[NSNumber alloc] initWithUnsignedLong:[self.cardViewsArray count] - 1];
-    [self removeCardViews:@[index]];
+  for (CardView *cardView in self.cardViewsArray) {
+    [cardView removeFromSuperview];
   }
+  
+  [self.cardViewsArray removeAllObjects];
 }
 
 - (void)updateIndices {

@@ -26,7 +26,7 @@
 
 - (void) initCards {
   
-  for (int i = 0; i < self.cardsNumber ; ++i) {
+  for (int i = 0; i < self.initialCardsNumber ; ++i) {
     Card* card = [self.game cardAtIndex:i];
     [self addCardView:card withIndex:i];
   }
@@ -59,7 +59,7 @@
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
   if ([segue.identifier isEqualToString:@"CardsGridSegue"]) {
     self.cardsGridVC = (CardsGridViewController *)segue.destinationViewController;
-    self.cardsGridVC.minCellsNumber = self.cardsNumber;
+    self.cardsGridVC.minCellsNumber = self.initialCardsNumber;
     self.cardsGridVC.animationQueue = self.animationQueue;
     [self initCards];
   }
@@ -72,7 +72,7 @@
 
 - (CardMatchingGame *)game {
   if (!_game) {
-    _game = [self createGame:self.cardsNumber];
+    _game = [self createGame:self.initialCardsNumber];
   }
   
   return _game;
@@ -105,7 +105,7 @@
   
   // TODO: remove the assumption on sepcific order
   for (Card *card in [turn.chosenCards reverseObjectEnumerator]) {
-    [self onCardChanged:card.index];
+    [self onCardChanged:card];
   }
   
   if (turn.match) {
@@ -168,7 +168,7 @@
   return _animationQueue;
 }
 
-- (void)onCardChanged:(NSUInteger)cardIndex {
+- (void)onCardChanged:(Card *)card {
   assert(0);
 }
 

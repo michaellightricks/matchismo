@@ -18,7 +18,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 static const int MAX_MATCH_NUMBERS[] = {2, 3};
 
-- (NSUInteger)cardsNumber {
+- (NSUInteger)initialCardsNumber {
   return 30;
 }
 
@@ -55,10 +55,9 @@ static const int MAX_MATCH_NUMBERS[] = {2, 3};
   return result;
 }
 
-- (void)onCardChanged:(NSUInteger)cardIndex {
+- (void)onCardChanged:(Card *)card {
   
-  PlayingCardView *cardView = (PlayingCardView *)[self.cardsGridVC getCardViewAt:cardIndex];
-  PlayingCard *card = (PlayingCard *)[self.game cardAtIndex:cardIndex];
+  PlayingCardView *cardView = (PlayingCardView *)[self.cardsGridVC getCardViewAt:card.index];
   
   if (card.isChosen == cardView.faceUp) {
     return;

@@ -40,6 +40,8 @@ typedef void(^singleCardBlock)(NSUInteger cardIndex);
 @property (readonly, nonatomic) BOOL started;
 @property (readonly, nonatomic) NSInteger score;
 @property (strong, nonatomic) NSMutableArray* turns;
+@property (nonatomic) Deck * deck;
+@property (nonatomic) NSMutableArray *cards;
 
 @end
 
