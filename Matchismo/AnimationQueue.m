@@ -33,26 +33,17 @@ NS_ASSUME_NONNULL_BEGIN
 - (void)runAnimationItem:(AnimationQueueItem *)item {
   __weak AnimationQueue* weakSelf = self;
   
-  if (item.beforeAnimation) {
-    item.beforeAnimation();
-  }
+  [item runWithCompletion:^(BOOL finished) {
+    if ([weakSelf.queue containsObject:item]) {
+      [weakSelf.queue removeObject:item];
+      
+      if ([weakSelf.queue count] > 0) {
+        AnimationQueueItem *nextItem = weakSelf.queue[0];
+        [weakSelf runAnimationItem:nextItem];
+      }
+    }
+  }];
   
-  [UIView animateWithDuration:item.duration
-                   animations:item.animation
-                   completion:^(BOOL finished) {
-                     if (item.completion != nil) {
-                       item.completion(finished);
-                     }
-                     
-                     if ([weakSelf.queue containsObject:item]) {
-                       [weakSelf.queue removeObject:item];
-                     
-                       if ([weakSelf.queue count] > 0) {
-                         AnimationQueueItem *nextItem = weakSelf.queue[0];
-                         [weakSelf runAnimationItem:nextItem];
-                       }
-                     }
-                   }];
 }
 
 - (void)clearAnimations {

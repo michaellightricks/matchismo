@@ -9,15 +9,16 @@
 #import "MatchingGameViewController.h"
 #import "CardView.h"
 #import "SetMatchingGame.h"
-#import "CardsGridViewController.h"
 #import "CardView.h"
+#import "AnimationQueue.h"
+#import "AnimationQueueItem.h"
+
 
 @interface MatchingGameViewController ()
 
 @property (weak, nonatomic) IBOutlet UILabel *scoreLabel;
 @property (weak, nonatomic) IBOutlet UIButton *btnNew;
 @property (weak, nonatomic) IBOutlet UILabel *descLabel;
-@property (weak, nonatomic) CardsGridViewController* cardsGridVC;
 
 @end
 
@@ -25,18 +26,21 @@
 
 - (void) initCards {
   
-  for (int i = 0; i < self.cardsNumber; ++i) {
+  for (int i = 0; i < self.cardsNumber ; ++i) {
     Card* card = [self.game cardAtIndex:i];
-    [self addCardView:card];
+    [self addCardView:card withIndex:i];
   }
 }
 
-- (CardView *)addCardView:(Card *)card {
+- (CardView *)addCardView:(Card *)card withIndex:(NSInteger)index{
 
   CardView *cardView = [self createCardView:card];
-  [cardView addTarget:self action:@selector(touchCardbutton:) forControlEvents:UIControlEventTouchUpInside];
+  cardView.tag = index;
+  
+  [cardView addTarget:self action:@selector(touchCard:) forControlEvents:UIControlEventTouchUpInside];
+  
   [self.cardsGridVC addCardView:cardView];
-
+  
   return cardView;
 }
 
@@ -56,6 +60,7 @@
   if ([segue.identifier isEqualToString:@"CardsGridSegue"]) {
     self.cardsGridVC = (CardsGridViewController *)segue.destinationViewController;
     self.cardsGridVC.minCellsNumber = self.cardsNumber;
+    self.cardsGridVC.animationQueue = self.animationQueue;
     [self initCards];
   }
 }
@@ -83,11 +88,6 @@
   [self updateUI];
 }
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
-
 - (IBAction)touchNew:(UIButton *)sender {
   [self resetGame];
   [self updateUI];
@@ -96,12 +96,27 @@
 - (void)resetGame {
   _game = nil;
   
-  [self.cardsGridVC dealCards];
+  [self.cardsGridVC clear];
+  [self initCards];
 }
 
-- (IBAction)touchCardbutton:(CardView *)sender {
-  NSUInteger index = 0;//[self.cardButtons indexOfObject:sender];
-  [self.game chooseCardAtIndex:index];
+- (IBAction)touchCard:(CardView *)sender {
+  GameTurn *turn = [self.game chooseCardAtIndex:sender.tag];
+  
+  // TODO: remove the assumption on sepcific order
+  for (Card *card in [turn.chosenCards reverseObjectEnumerator]) {
+    [self onCardChanged:card.index];
+  }
+  
+  if (turn.match) {
+    NSMutableArray *indicesToRemove = [[NSMutableArray alloc] init];
+    for (Card * card in turn.chosenCards) {
+      [indicesToRemove addObject:[[NSNumber alloc] initWithUnsignedLong:card.index]];
+    }
+    
+    [self.cardsGridVC removeCardViews:indicesToRemove];
+  }
+  
   [self updateUI];
 }
 
@@ -143,6 +158,18 @@
 - (UIImage *)getImageForCard:(Card *)card {
   assert(0);
   return nil;
+}
+
+- (AnimationQueue *)animationQueue {
+  if (!_animationQueue) {
+    _animationQueue = [[AnimationQueue alloc] init];
+  }
+  
+  return _animationQueue;
+}
+
+- (void)onCardChanged:(NSUInteger)cardIndex {
+  assert(0);
 }
 
 @end

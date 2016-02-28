@@ -13,26 +13,28 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
+typedef void(^cardsCollectionBlock)(NSArray *cardsIndicies);
+typedef void(^singleCardBlock)(NSUInteger cardIndex);
+
 @interface GameTurn : NSObject
 
 @property (strong, nonatomic) NSMutableArray* chosenCards;
 @property (nonatomic) NSInteger scoreDelta;
 @property (nonatomic) NSInteger score;
 
+@property (nonatomic) BOOL match;
+
 @end
 
 @interface CardMatchingGame : NSObject
 
 - (instancetype)initWithCardCount:(NSUInteger)count;
-
-- (void)chooseCardAtIndex:(NSUInteger)index;
+- (GameTurn *)chooseCardAtIndex:(NSUInteger)index;
 - (Card *)cardAtIndex:(NSUInteger)index;
 
 // protected abstract start
-
 - (Deck *)createDeck;
 - (id <MatchingStrategy>)createMatchingStrategy;
-
 // protected abstract end
 
 @property (readonly, nonatomic) BOOL started;

@@ -55,6 +55,26 @@ static const int MAX_MATCH_NUMBERS[] = {2, 3};
   return result;
 }
 
+- (void)onCardChanged:(NSUInteger)cardIndex {
+  
+  PlayingCardView *cardView = (PlayingCardView *)[self.cardsGridVC getCardViewAt:cardIndex];
+  PlayingCard *card = (PlayingCard *)[self.game cardAtIndex:cardIndex];
+  
+  if (card.isChosen == cardView.faceUp) {
+    return;
+  }
+
+  AnimationQueueItemTransition *transition = [[AnimationQueueItemTransition alloc] init];
+  transition.view = cardView;
+  transition.duration = 0.2;
+  transition.beforeAnimation = nil;
+  transition.animation = ^{cardView.faceUp = card.isChosen;};
+  transition.completion = nil;
+  
+  [self.animationQueue addAnimation:transition];
+  
+}
+
 @end
 
 NS_ASSUME_NONNULL_END

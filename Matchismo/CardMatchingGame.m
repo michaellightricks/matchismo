@@ -54,11 +54,13 @@ static const int COST_TO_CHOSE = 1;
   self = [super init];
   
   if (self) {
+   
     _started = NO;
     Deck *deck = [self createDeck];
     for (int i = 0; i < count; ++i) {
       Card *card = [deck drawRandomCard];
       if (card)  {
+        card.index = i;
         [self.cards addObject:card];
         NSLog(@"%@", card.contents);
       }
@@ -82,12 +84,12 @@ static const int COST_TO_CHOSE = 1;
   return nil;
 }
 
-- (void)chooseCardAtIndex:(NSUInteger)index {
+- (GameTurn *)chooseCardAtIndex:(NSUInteger)index {
   _started = YES;
   Card *card = [self cardAtIndex:index];
   
   if (card.isMatched || card.isChosen) {
-    return;
+    return nil;
   }
 
   GameTurn* turn = [[GameTurn alloc] init];
@@ -107,14 +109,32 @@ static const int COST_TO_CHOSE = 1;
   self.score += turn.scoreDelta;
   turn.score = self.score;
   
+  [turn.chosenCards addObject:card];
+
+  if (turn.scoreDelta > 0) {
+    [self handleMatchTurn:turn];
+  }
+  
   // clone cards for history
   for (int i = 0; i < [turn.chosenCards count]; ++i) {
     turn.chosenCards[i] = [turn.chosenCards[i] clone];
   }
   
-  [turn.chosenCards addObject:[card clone]];
-  
   [self.turns addObject:turn];
+  
+  return turn;
+}
+
+- (void)handleMatchTurn:(GameTurn *)turn {
+  turn.match = true;
+  for (Card *card in turn.chosenCards) {
+    [self.cards removeObject:card];
+  }
+  
+  int idx = 0;
+  for (Card *card in self.cards) {
+    card.index = idx++;
+  }
 }
 
 - (Card *)cardAtIndex:(NSUInteger)index {

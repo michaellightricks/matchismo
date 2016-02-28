@@ -80,6 +80,17 @@ NS_ASSUME_NONNULL_BEGIN
   return result;
 }
 
+- (void)onCardChanged:(NSUInteger)cardIndex {
+  SetCardView *setCardView = (SetCardView *)[self.cardsGridVC getCardViewAt:cardIndex];
+  SetCard *card = (SetCard *)[self.game cardAtIndex:setCardView.tag];
+
+  if (setCardView.chosen == card.isChosen) {
+    return;
+  }
+  
+  setCardView.chosen = card.isChosen;
+}
+
 @end
 
 NS_ASSUME_NONNULL_END

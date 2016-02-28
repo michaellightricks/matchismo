@@ -23,6 +23,60 @@ NS_ASSUME_NONNULL_BEGIN
   return self;
 }
 
+- (void)runWithCompletion:(completionBlock)completion {
+  if (self.beforeAnimation) {
+    self.beforeAnimation();
+  }
+}
+
 @end
+
+
+@implementation AnimationQueueItemSimple
+
+- (void)runWithCompletion:(completionBlock)completion {
+  [super runWithCompletion:completion];
+  
+  [UIView animateWithDuration:self.duration
+                        delay:self.delay
+                      options:UIViewAnimationOptionBeginFromCurrentState
+                   animations:self.animation
+                   completion:^(BOOL finished) {
+                     if (self.completion != nil) {
+                       self.completion(finished);
+                     }
+                     
+                     if (completion) {
+                       completion(finished);
+                     }
+                   }];
+
+}
+
+@end
+
+@implementation AnimationQueueItemTransition
+
+- (void)runWithCompletion:(completionBlock)completion {
+  [super runWithCompletion:completion];
+  
+  [UIView transitionWithView:self.view
+                    duration:self.duration
+                     options:UIViewAnimationOptionTransitionFlipFromLeft
+                  animations:self.animation
+                   completion:^(BOOL finished) {
+                     if (self.completion != nil) {
+                       self.completion(finished);
+                     }
+                     
+                     if (completion) {
+                       completion(finished);
+                     }
+                   }];
+
+}
+
+@end
+
 
 NS_ASSUME_NONNULL_END

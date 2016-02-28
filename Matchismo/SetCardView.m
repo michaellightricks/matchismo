@@ -183,6 +183,12 @@ NS_ASSUME_NONNULL_BEGIN
   [self setNeedsDisplay];
 }
 
+- (void)setChosen:(BOOL)chosen {
+  self.roundedRectFillColor = (chosen) ? [UIColor yellowColor] : [UIColor whiteColor];
+  _chosen = chosen;
+  [self setNeedsDisplay];
+}
+
 @end
 
 NS_ASSUME_NONNULL_END

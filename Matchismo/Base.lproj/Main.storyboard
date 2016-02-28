@@ -288,9 +288,9 @@
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="W2B-Q4-6ic">
                                 <rect key="frame" x="20" y="513" width="46" height="30"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="46" id="4E2-zN-vGK"/>
                                     <constraint firstAttribute="width" constant="46" id="BHa-Sa-gPf"/>
-                                    <constraint firstAttribute="height" constant="30" id="Mi8-cY-6PZ"/>
+                                    <constraint firstAttribute="width" constant="46" id="bt9-hY-8BJ"/>
+                                    <constraint firstAttribute="height" constant="30" id="p4t-wf-oRD"/>
                                 </constraints>
                                 <state key="normal" title="New" backgroundImage="cardfront"/>
                                 <variation key="default">
@@ -313,7 +313,7 @@
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NAC-8D-E8w">
                                 <rect key="frame" x="20" y="455" width="560" height="21"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="21" id="bW8-7Y-965"/>
+                                    <constraint firstAttribute="height" constant="21" id="PWC-rS-hbf"/>
                                     <constraint firstAttribute="height" constant="21" id="wHm-tw-5Qt"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
@@ -336,8 +336,8 @@
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Score: 0" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WIA-TA-gTK">
                                 <rect key="frame" x="20" y="484" width="560" height="21"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="21" id="9HP-Og-UMK"/>
                                     <constraint firstAttribute="height" constant="21" id="H0w-e8-u25"/>
+                                    <constraint firstAttribute="height" constant="21" id="Zo7-Ow-ksb"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
@@ -362,21 +362,32 @@
                                     <segue destination="oyq-Pd-6t0" kind="embed" identifier="CardsGridSegue" id="IOJ-mS-9CZ"/>
                                 </connections>
                             </containerView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zDF-B7-BVa">
+                                <rect key="frame" x="534" y="513" width="46" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="46" id="K2j-qv-agt"/>
+                                </constraints>
+                                <state key="normal" title="More" backgroundImage="cardfront"/>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="0.0" green="0.50196081400000003" blue="0.25098040700000002" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
-                            <constraint firstItem="WIA-TA-gTK" firstAttribute="trailing" secondItem="NAC-8D-E8w" secondAttribute="trailing" id="1RY-os-2aV"/>
-                            <constraint firstItem="WIA-TA-gTK" firstAttribute="top" secondItem="NAC-8D-E8w" secondAttribute="bottom" constant="8" symbolic="YES" id="6Gj-sc-1uu"/>
-                            <constraint firstItem="W2B-Q4-6ic" firstAttribute="leading" secondItem="WIA-TA-gTK" secondAttribute="leading" id="9nd-VW-7Cf"/>
-                            <constraint firstItem="WIA-TA-gTK" firstAttribute="leading" secondItem="aWU-vG-hgf" secondAttribute="leadingMargin" id="JEz-Zl-qeC"/>
-                            <constraint firstItem="WIA-TA-gTK" firstAttribute="leading" secondItem="NAC-8D-E8w" secondAttribute="leading" id="KNG-RK-gYi"/>
-                            <constraint firstItem="Ptn-Sb-oHd" firstAttribute="trailing" secondItem="aWU-vG-hgf" secondAttribute="trailingMargin" id="LpA-F7-FeJ"/>
-                            <constraint firstItem="Ptn-Sb-oHd" firstAttribute="top" secondItem="bAK-Ws-Fzn" secondAttribute="bottom" constant="8" symbolic="YES" id="dd5-dX-MRb"/>
-                            <constraint firstItem="XJ6-yL-Kv2" firstAttribute="top" secondItem="W2B-Q4-6ic" secondAttribute="bottom" constant="8" symbolic="YES" id="ihP-If-Mwq"/>
-                            <constraint firstItem="NAC-8D-E8w" firstAttribute="leading" secondItem="Ptn-Sb-oHd" secondAttribute="leading" id="km4-GZ-UW2"/>
-                            <constraint firstItem="NAC-8D-E8w" firstAttribute="top" secondItem="Ptn-Sb-oHd" secondAttribute="bottom" constant="8" symbolic="YES" id="peX-TV-Zjx"/>
-                            <constraint firstItem="Ptn-Sb-oHd" firstAttribute="trailing" secondItem="NAC-8D-E8w" secondAttribute="trailing" id="s9c-dY-rIn"/>
-                            <constraint firstItem="W2B-Q4-6ic" firstAttribute="top" secondItem="WIA-TA-gTK" secondAttribute="bottom" constant="8" symbolic="YES" id="sda-Fn-2xB"/>
+                            <constraint firstItem="XJ6-yL-Kv2" firstAttribute="top" secondItem="W2B-Q4-6ic" secondAttribute="bottom" constant="8" symbolic="YES" id="0xr-xn-RXo"/>
+                            <constraint firstItem="Ptn-Sb-oHd" firstAttribute="top" secondItem="bAK-Ws-Fzn" secondAttribute="bottom" constant="8" symbolic="YES" id="1Ci-zH-1DP"/>
+                            <constraint firstItem="WIA-TA-gTK" firstAttribute="leading" secondItem="W2B-Q4-6ic" secondAttribute="leading" id="4aC-08-zjQ"/>
+                            <constraint firstItem="NAC-8D-E8w" firstAttribute="leading" secondItem="WIA-TA-gTK" secondAttribute="leading" id="8Zl-f4-Z4X"/>
+                            <constraint firstItem="Ptn-Sb-oHd" firstAttribute="trailing" secondItem="aWU-vG-hgf" secondAttribute="trailingMargin" id="Brv-4r-lmj"/>
+                            <constraint firstItem="zDF-B7-BVa" firstAttribute="baseline" secondItem="W2B-Q4-6ic" secondAttribute="firstBaseline" id="Ms9-qH-Gaq"/>
+                            <constraint firstItem="W2B-Q4-6ic" firstAttribute="leading" secondItem="aWU-vG-hgf" secondAttribute="leadingMargin" id="N5G-uy-yzY"/>
+                            <constraint firstItem="W2B-Q4-6ic" firstAttribute="top" secondItem="zDF-B7-BVa" secondAttribute="top" id="TwI-bd-atj"/>
+                            <constraint firstItem="WIA-TA-gTK" firstAttribute="top" secondItem="NAC-8D-E8w" secondAttribute="bottom" constant="8" symbolic="YES" id="ddx-8d-4kw"/>
+                            <constraint firstItem="Ptn-Sb-oHd" firstAttribute="leading" secondItem="NAC-8D-E8w" secondAttribute="leading" id="eUY-vh-ofb"/>
+                            <constraint firstItem="W2B-Q4-6ic" firstAttribute="top" secondItem="WIA-TA-gTK" secondAttribute="bottom" constant="8" symbolic="YES" id="nG9-L6-3iz"/>
+                            <constraint firstItem="WIA-TA-gTK" firstAttribute="trailing" secondItem="NAC-8D-E8w" secondAttribute="trailing" id="nTq-r3-4XU"/>
+                            <constraint firstItem="Ptn-Sb-oHd" firstAttribute="trailing" secondItem="NAC-8D-E8w" secondAttribute="trailing" id="neF-mO-tVB"/>
+                            <constraint firstItem="zDF-B7-BVa" firstAttribute="trailing" secondItem="WIA-TA-gTK" secondAttribute="trailing" id="rw0-Rd-kfC"/>
+                            <constraint firstItem="W2B-Q4-6ic" firstAttribute="baseline" secondItem="zDF-B7-BVa" secondAttribute="firstBaseline" id="s5G-Bu-f9q"/>
+                            <constraint firstItem="NAC-8D-E8w" firstAttribute="top" secondItem="Ptn-Sb-oHd" secondAttribute="bottom" constant="8" symbolic="YES" id="tcU-as-aVW"/>
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Set Game" id="Ytt-im-Plm" userLabel="Set Game"/>
@@ -394,6 +405,10 @@
         <scene sceneID="Otf-LF-BTP">
             <objects>
                 <viewController id="oyq-Pd-6t0" customClass="CardsGridViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="1eh-9M-4oj"/>
+                        <viewControllerLayoutGuide type="bottom" id="Qdt-38-xJZ"/>
+                    </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="Why-kT-LGH">
                         <rect key="frame" x="0.0" y="0.0" width="560" height="375"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -409,6 +424,6 @@
         <image name="cardfront" width="64" height="96"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="R5I-3T-W8P"/>
+        <segue reference="IOJ-mS-9CZ"/>
     </inferredMetricsTieBreakers>
 </document>

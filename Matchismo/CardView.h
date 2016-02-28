@@ -11,7 +11,8 @@ NS_ASSUME_NONNULL_BEGIN
 - (float)cornerScaleFactor;
 - (float)cornerRadius;
 - (void)popContext;
-- (void)onTap:(UITapGestureRecognizer *)recognizer;
+
+@property (nonatomic) UIColor* roundedRectFillColor;
 
 @end
 

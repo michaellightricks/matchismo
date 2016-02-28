@@ -21,6 +21,7 @@
     self.contents = card.contents;
     self.chosen = card.isChosen;
     self.matched = card.isMatched;
+    self.index = card.index;
   }
   
   return self;
