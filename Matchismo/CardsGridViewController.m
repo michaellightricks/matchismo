@@ -20,24 +20,24 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property (nonatomic) NSMutableSet *animatedViews;
 
+@property (nonatomic) UIDynamicAnimator *animator;
+
+@property (nonatomic) UIPinchGestureRecognizer *pinchRecognizer;
+
+@property (nonatomic) UIPanGestureRecognizer *panRecognizer;
+
+@property (nonatomic) BOOL attachStarted;
+
 @end
 
 @implementation CardsGridViewController
 
 #define ITEM_MARGIN_SIZE (2)
 
-- (void)setMinCellsNumber:(NSUInteger)value {
-  _minCellsNumber = value;
+- (void)viewDidLoad {
+  [super viewDidLoad];
   
-  [self updateViews];
-}
-
-- (NSMutableSet *)animatedViews {
-  if (!_animatedViews) {
-    _animatedViews = [[NSMutableSet alloc] init];
-  }
-  
-  return _animatedViews;
+  [self.view addGestureRecognizer:self.pinchRecognizer];
 }
 
 - (void)viewWillLayoutSubviews {
@@ -47,6 +47,7 @@ NS_ASSUME_NONNULL_BEGIN
   
   self.grid = [[Grid alloc] init];
   self.grid.size = self.view.bounds.size;
+  self.grid.minimumNumberOfCells = self.minCellsNumber;
   self.grid.cellAspectRatio = 2.0 / 3.0;
   
   [self updateViews];
@@ -55,11 +56,20 @@ NS_ASSUME_NONNULL_BEGIN
 - (void)addCardView:(CardView *)cardView {
 
   [self.cardViewsArray addObject:cardView];
+  [cardView addTarget:self action:@selector(touchCard:) forControlEvents:UIControlEventTouchUpInside];
   [self.view addSubview:cardView];
   
   if (_grid) {
     [self addDealAnimationForCard:[self.cardViewsArray count] - 1];
   }
+}
+
+- (IBAction)touchCard:(CardView *)sender {
+  if (self.attachStarted) {
+    return;
+  }
+  
+  self.onTouchCard(sender);
 }
 
 - (CGRect)getFrameForCardIndex:(NSUInteger)index byGrid:(Grid *)grid{
@@ -84,6 +94,10 @@ NS_ASSUME_NONNULL_BEGIN
   for (int i = 0; i < [indices count]; ++i) {
     NSNumber *index = (NSNumber *)indices[[indices count] - i - 1];
     NSUInteger integerIdx = [index unsignedIntegerValue];
+    
+    CardView *cardView = self.cardViewsArray[integerIdx];
+    
+    [cardView removeTarget:self action:@selector(touchCard:) forControlEvents:UIControlEventTouchUpInside];
     [removed addObject:[self.cardViewsArray objectAtIndex:integerIdx]];
     [self.cardViewsArray removeObjectAtIndex:integerIdx];
   }
@@ -111,6 +125,8 @@ NS_ASSUME_NONNULL_BEGIN
     for (CardView * cardView in cardViews) {
       [cardView removeFromSuperview];
     }
+    
+    weakSelf.minCellsNumber = [weakSelf.cardViewsArray count];
   };
   
   [self.animationQueue addAnimation:item];
@@ -121,6 +137,10 @@ NS_ASSUME_NONNULL_BEGIN
     return;
   
   self.grid.minimumNumberOfCells = self.minCellsNumber;
+
+  if (!self.grid.inputsAreValid) {
+    NSLog(@"grid inputs are invalid");
+  }
   
   for (int i = 0; i < [self.cardViewsArray count]; ++i) {
 
@@ -129,6 +149,8 @@ NS_ASSUME_NONNULL_BEGIN
       [cardView setFrame:[self getFrameForCardIndex:i byGrid:self.grid]];
     }
   }
+  
+  [self.view setNeedsDisplay];
 }
 
 - (NSMutableArray *)cardViewsArray {
@@ -158,8 +180,7 @@ NS_ASSUME_NONNULL_BEGIN
   item.duration = 0.2;
   item.beforeAnimation = ^{[weakSelf.animatedViews addObject:cardView];};
 
-  CGRect frame = [weakSelf getFrameForCardIndex:index byGrid:self.grid];
-  item.animation = ^{cardView.frame = frame;};
+  item.animation = ^{cardView.frame = [weakSelf getFrameForCardIndex:index byGrid:self.grid];};
   
   item.completion = nil;
 
@@ -190,6 +211,91 @@ NS_ASSUME_NONNULL_BEGIN
     CardView *cardView = (CardView *)self.cardViewsArray[i];
     cardView.tag = i;
   }
+}
+
+- (void)setMinCellsNumber:(NSUInteger)value {
+  _minCellsNumber = value;
+  
+  [self updateViews];
+}
+  
+- (NSMutableSet *)animatedViews {
+  if (!_animatedViews) {
+    _animatedViews = [[NSMutableSet alloc] init];
+  }
+  
+  return _animatedViews;
+}
+
+- (UIDynamicAnimator *)animator {
+  if (!_animator) {
+    _animator = [[UIDynamicAnimator alloc] initWithReferenceView:self.view];
+  }
+  
+  return _animator;
+}
+
+- (UIPinchGestureRecognizer *)pinchRecognizer {
+  if (!_pinchRecognizer) {
+    _pinchRecognizer = [[UIPinchGestureRecognizer alloc] initWithTarget:self action:@selector(onPinch:)];
+  }
+  
+  return _pinchRecognizer;
+}
+
+- (void)onPinch:(UIPinchGestureRecognizer *)recognizer {
+  NSLog(@"%f", recognizer.scale);
+  if (recognizer.scale < 0.5 && !self.attachStarted) {
+    CGPoint location = [recognizer locationInView:self.view];
+    [self startAttachMode:location];
+  }
+  else if (recognizer.scale > 0.7 && self.attachStarted) {
+    [self stopAttachMode];
+  }
+}
+
+- (void)onPan:(UIPanGestureRecognizer *)recognizer {
+  if (recognizer.state == UIGestureRecognizerStateBegan
+      || recognizer.state == UIGestureRecognizerStateChanged) {
+    for (UISnapBehavior *snap in self.animator.behaviors) {
+      snap.snapPoint = [recognizer locationInView:self.view];
+    }
+  }
+}
+
+- (void)startAttachMode:(CGPoint)location {
+  self.attachStarted = YES;
+
+  [self attachViews:self.cardViewsArray toAnchor:location];
+  
+  self.panRecognizer = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(onPan:)];
+  [self.view addGestureRecognizer:self.panRecognizer];
+}
+
+- (void)attachViews:(NSArray *)views toAnchor:(CGPoint)anchor {
+  for (CardView *cardView in views) {
+    UISnapBehavior *snap = [[UISnapBehavior alloc] initWithItem:cardView
+                                                    snapToPoint:anchor];
+    snap.damping = 1;
+    [self.animator addBehavior:snap];
+  }
+}
+
+- (void)stopAttachMode {
+  self.attachStarted = NO;
+
+  [self.animator removeAllBehaviors];
+  [self.view removeGestureRecognizer:self.panRecognizer];
+  
+  AnimationQueueItemSimple* animation = [[AnimationQueueItemSimple alloc] init];
+  animation.duration = 0.1;
+  animation.animation = ^{
+      for (CardView *cardView in self.cardViewsArray) {
+        cardView.frame = [self getFrameForCardIndex:cardView.tag byGrid:self.grid];
+      }
+    };
+  
+  [self.animationQueue addAnimation:animation];
 }
 
 @end

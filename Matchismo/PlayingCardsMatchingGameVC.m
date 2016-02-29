@@ -19,7 +19,7 @@ NS_ASSUME_NONNULL_BEGIN
 static const int MAX_MATCH_NUMBERS[] = {2, 3};
 
 - (NSUInteger)initialCardsNumber {
-  return 30;
+  return 15;
 }
 
 - (IBAction)matchMaxValueChanged:(id)sender {

@@ -19,6 +19,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *scoreLabel;
 @property (weak, nonatomic) IBOutlet UIButton *btnNew;
 @property (weak, nonatomic) IBOutlet UILabel *descLabel;
+@property (nonatomic) BOOL started;
 
 @end
 
@@ -37,8 +38,6 @@
   CardView *cardView = [self createCardView:card];
   cardView.tag = index;
   
-  [cardView addTarget:self action:@selector(touchCard:) forControlEvents:UIControlEventTouchUpInside];
-  
   [self.cardsGridVC addCardView:cardView];
   
   return cardView;
@@ -53,7 +52,10 @@
 
   [super viewDidAppear:animated];
   
-  [self.cardsGridVC dealCards];
+  if (!self.started) {
+    self.started = true;
+    [self.cardsGridVC dealCards];
+  }
 }
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
@@ -61,6 +63,10 @@
     self.cardsGridVC = (CardsGridViewController *)segue.destinationViewController;
     self.cardsGridVC.minCellsNumber = self.initialCardsNumber;
     self.cardsGridVC.animationQueue = self.animationQueue;
+
+    __weak MatchingGameViewController *weakSelf = self;
+    self.cardsGridVC.onTouchCard = ^(CardView *cardView) {[weakSelf touchCard:cardView];};
+    
     [self initCards];
   }
 }
@@ -149,7 +155,6 @@
   
   return result;
 }
-
 
 - (NSAttributedString *)getTitleForCard:(Card *)card {
   return [[NSAttributedString alloc] initWithString:( card.isChosen ? card.contents : @"")];

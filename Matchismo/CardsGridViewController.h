@@ -9,6 +9,8 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
+typedef void (^touchCardBlock)(CardView *cardView);
+
 @interface CardsGridViewController : UIViewController
 
 - (void)addCardView:(CardView *)cardView;
@@ -22,6 +24,8 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic) NSUInteger minCellsNumber;
 
 @property (nonatomic) AnimationQueue *animationQueue;
+
+@property (nonatomic, copy) touchCardBlock onTouchCard;
 
 @end
 
