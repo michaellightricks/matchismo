@@ -1,9 +1,9 @@
 // Copyright (c) 2016 Lightricks. All rights reserved.
 // Created by Michael Kupchick.
 
+#import "GameHistoryViewController.h"
 #import "GamesTabViewController.h"
 #import "MatchingGameViewController.h"
-#import "GameHistoryViewController.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -17,7 +17,7 @@ NS_ASSUME_NONNULL_BEGIN
       MatchingGameViewController *currentGameVC = (MatchingGameViewController *)self.selectedViewController;
       
       historyController.turns = currentGameVC.game.turns;
-      historyController.turnTitleProvider = currentGameVC;
+      historyController.turnStatusProvider = currentGameVC;
     }
   }
 }

@@ -31,7 +31,6 @@ NS_ASSUME_NONNULL_BEGIN
 
 @end
 
-
 @implementation AnimationQueueItemSimple
 
 - (void)runWithCompletion:(completionBlock)completion {
@@ -77,6 +76,5 @@ NS_ASSUME_NONNULL_BEGIN
 }
 
 @end
-
 
 NS_ASSUME_NONNULL_END

@@ -1,9 +1,9 @@
 // Copyright (c) 2016 Lightricks. All rights reserved.
 // Created by Michael Kupchick.
 
-#import "PlayingCardsMatchingGameVC.h"
-#import "PlayingCardMatchingGame.h"
 #import "PlayingCard.h"
+#import "PlayingCardMatchingGame.h"
+#import "PlayingCardsMatchingGameVC.h"
 #import "PlayingCardView.h"
 
 NS_ASSUME_NONNULL_BEGIN
@@ -56,7 +56,6 @@ static const int MAX_MATCH_NUMBERS[] = {2, 3};
 }
 
 - (void)onCardChanged:(Card *)card {
-  
   PlayingCardView *cardView = (PlayingCardView *)[self.cardsGridVC getCardViewAt:card.index];
   
   if (card.isChosen == cardView.faceUp) {
@@ -71,7 +70,6 @@ static const int MAX_MATCH_NUMBERS[] = {2, 3};
   transition.completion = nil;
   
   [self.animationQueue addAnimation:transition];
-  
 }
 
 @end

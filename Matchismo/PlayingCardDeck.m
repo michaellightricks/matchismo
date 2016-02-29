@@ -7,21 +7,19 @@
 //
 
 #import "PlayingCardDeck.h"
+
 #import "PlayingCard.h"
 
+NS_ASSUME_NONNULL_BEGIN
 
 @implementation PlayingCardDeck
 
-- (instancetype)init
-{
+- (instancetype)init {
   self = [super init];
-  if (self)
-  {
-    for (NSString *suit in [PlayingCard validSuits])
-    {
-      //NSLog(@"maxRank %d", [PlayingCard maxRank]);
-      for (NSUInteger rank = 1; rank <= [PlayingCard maxRank]; ++rank)
-      {
+
+  if (self) {
+    for (NSString *suit in [PlayingCard validSuits]) {
+      for (NSUInteger rank = 1; rank <= [PlayingCard maxRank]; ++rank) {
         PlayingCard* card = [[PlayingCard alloc] init];
         card.rank = rank;
         card.suite = suit;
@@ -35,3 +33,5 @@
 }
 
 @end
+
+NS_ASSUME_NONNULL_END

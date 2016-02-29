@@ -6,6 +6,7 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
+/// struct that holds the temporary counters for set matching strategy
 typedef struct cardMatchStatisticsType {
   int equalsCount;
   int equalsMax;
@@ -16,7 +17,6 @@ typedef struct cardMatchStatisticsType {
 @implementation SetMatchingStrategy
 
 - (NSInteger)matchCard:(Card *)card withOtherCards:(NSArray *)otherCards {
-
   // we will count card properties that are equal
   // if at the end max count for each property is _cards_count_ or 0
   // we have set (_cards_count_ all cards are equal 0 are different)

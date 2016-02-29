@@ -11,6 +11,7 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
+/// Implementation of the set cards deck
 @interface SetDeck : Deck
 
 @end

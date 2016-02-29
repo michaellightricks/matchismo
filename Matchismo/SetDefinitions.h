@@ -3,6 +3,7 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
+/// enumeration for valid card shading according to the rules of the set game
 typedef enum setCardShadings {
   SHADING_SOLID,
   SHADING_STRIPED,
@@ -10,6 +11,7 @@ typedef enum setCardShadings {
   SHADING_MAX
 } SetCardShading;
 
+/// enumeration for valid card symbols according to the rules of the set game
 typedef enum setCardSymbols {
   SYMBOL_DIAMOND,
   SYMBOL_OVAL,

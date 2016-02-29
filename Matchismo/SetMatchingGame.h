@@ -6,6 +6,7 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
+/// Set matching game implementation
 @interface SetMatchingGame : CardMatchingGame
 
 // returns array with new cards

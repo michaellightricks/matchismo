@@ -6,8 +6,8 @@
 //  Copyright © 2016 Michael Kupchick. All rights reserved.
 //
 
-#import "SetDeck.h"
 #import "SetCard.h"
+#import "SetDeck.h"
 
 NS_ASSUME_NONNULL_BEGIN
 

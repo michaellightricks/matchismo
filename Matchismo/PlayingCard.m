@@ -7,7 +7,10 @@
 //
 
 #import "PlayingCard.h"
+
 #import "Card.h"
+
+NS_ASSUME_NONNULL_BEGIN
 
 @implementation PlayingCard
 
@@ -65,3 +68,5 @@
 }
 
 @end
+
+NS_ASSUME_NONNULL_END

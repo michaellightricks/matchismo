@@ -6,8 +6,10 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
+/// Object that implements the playing card game
 @interface PlayingCardMatchingGame : CardMatchingGame
 
+/// Number of cards that match can be performed on
 @property (nonatomic) NSUInteger maxMatchCount;
 
 @end

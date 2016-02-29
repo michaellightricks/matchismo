@@ -3,29 +3,21 @@
 
 #import "CardsGridViewController.h"
 
-#import "PlayingCardView.h"
-#import "Grid.h"
 #import "AnimationQueue.h"
-
+#import "Grid.h"
+#import "PlayingCardView.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
 @interface CardsGridViewController()
 
-@property (nonatomic) NSMutableArray *cardViewsArray;
-
-@property (nonatomic) Grid *grid;
-
+@property (strong, nonatomic) NSMutableArray *cardViewsArray;
+@property (strong, nonatomic) Grid *grid;
 @property (nonatomic) CGRect cardViewSourceFrame;
-
-@property (nonatomic) NSMutableSet *animatedViews;
-
-@property (nonatomic) UIDynamicAnimator *animator;
-
-@property (nonatomic) UIPinchGestureRecognizer *pinchRecognizer;
-
-@property (nonatomic) UIPanGestureRecognizer *panRecognizer;
-
+@property (strong, nonatomic) NSMutableSet *animatedViews;
+@property (strong, nonatomic) UIDynamicAnimator *animator;
+@property (strong, nonatomic) UIPinchGestureRecognizer *pinchRecognizer;
+@property (strong, nonatomic) UIPanGestureRecognizer *panRecognizer;
 @property (nonatomic) BOOL attachStarted;
 
 @end
@@ -54,7 +46,6 @@ NS_ASSUME_NONNULL_BEGIN
 }
 
 - (void)addCardView:(CardView *)cardView {
-
   [self.cardViewsArray addObject:cardView];
   [cardView addTarget:self action:@selector(touchCard:) forControlEvents:UIControlEventTouchUpInside];
   [self.view addSubview:cardView];
@@ -86,7 +77,6 @@ NS_ASSUME_NONNULL_BEGIN
 }
 
 - (NSArray *)removeCardViewsInternal:(NSArray *)indices{
-
   indices = [indices sortedArrayUsingSelector:@selector(compare:)];
 
   NSMutableArray *removed = [[NSMutableArray alloc] init];
@@ -106,7 +96,6 @@ NS_ASSUME_NONNULL_BEGIN
 }
 
 - (void)addRemoveAnimation:(NSArray *)cardViews {
-
   __weak CardsGridViewController *weakSelf = self;
   
   AnimationQueueItemSimple *item = [[AnimationQueueItemSimple alloc] init];
@@ -170,7 +159,6 @@ NS_ASSUME_NONNULL_BEGIN
 }
 
 - (void)addDealAnimationForCard:(NSUInteger)index {
-
   __weak CardsGridViewController *weakSelf = self;
   
   CardView *cardView = self.cardViewsArray[index];
@@ -180,7 +168,9 @@ NS_ASSUME_NONNULL_BEGIN
   item.duration = ANIMATION_DURATION_DEFAULT;
   item.beforeAnimation = ^{[weakSelf.animatedViews addObject:cardView];};
 
-  item.animation = ^{cardView.frame = [weakSelf getFrameForCardIndex:index byGrid:self.grid];};
+  item.animation = ^{
+    cardView.frame = [weakSelf getFrameForCardIndex:index byGrid:self.grid];
+  };
   
   item.completion = nil;
 

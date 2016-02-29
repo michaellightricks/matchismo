@@ -2,8 +2,9 @@
 // Created by Michael Kupchick.
 
 #import "PlayingCardMatchingGame.h"
-#import "PlayingCardDeck.h"
+
 #import "MinMaxMatchingStrategy.h"
+#import "PlayingCardDeck.h"
 
 NS_ASSUME_NONNULL_BEGIN
 

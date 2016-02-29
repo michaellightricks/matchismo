@@ -7,9 +7,13 @@
 //
 
 #import <Foundation/Foundation.h>
+
 #import "Card.h"
 #import "SetDefinitions.h"
 
+NS_ASSUME_NONNULL_BEGIN
+
+/// enumeration of valid colors for set card
 typedef enum setCardColors {
   COLORS_RED,
   COLORS_GREEN,
@@ -17,10 +21,13 @@ typedef enum setCardColors {
   COLORS_MAX
 } SetCardColor;
 
+/// Object that implements the set game card
 @interface SetCard : Card
 
+/// initializes the card by copying the properties of the other one
 - (instancetype) initWithOther:(SetCard *) other;
 
+/// max valid rank for the set card
 +(NSUInteger) maxRank;
 
 @property (nonatomic) SetCardShading shading;
@@ -29,3 +36,5 @@ typedef enum setCardColors {
 @property (nonatomic) NSUInteger rank;
 
 @end
+
+NS_ASSUME_NONNULL_END

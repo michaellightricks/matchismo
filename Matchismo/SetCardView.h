@@ -7,6 +7,7 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
+/// Object that displays the set card
 @interface SetCardView : CardView
 
 @property (nonatomic) SetCardShading shading;

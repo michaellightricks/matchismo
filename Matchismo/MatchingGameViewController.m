@@ -25,8 +25,7 @@
 
 @implementation MatchingGameViewController
 
-- (void) initCards {
-  
+- (void)initCards {
   for (int i = 0; i < self.initialCardsNumber ; ++i) {
     Card* card = [self.game cardAtIndex:i];
     [self addCardView:card withIndex:i];
@@ -34,7 +33,6 @@
 }
 
 - (CardView *)addCardView:(Card *)card withIndex:(NSInteger)index{
-
   CardView *cardView = [self createCardView:card];
   cardView.tag = index;
   
@@ -49,13 +47,17 @@
 }
 
 - (void)viewDidAppear:(BOOL)animated {
-
   [super viewDidAppear:animated];
   
   if (!self.started) {
     self.started = true;
     [self.cardsGridVC dealCards];
   }
+}
+
+- (void)viewWillLayoutSubviews {
+  [super viewWillLayoutSubviews];
+  [self updateUI];
 }
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
@@ -71,11 +73,6 @@
   }
 }
 
-- (CardView *)createCardView {
-  assert(0);
-  return nil;
-}
-
 - (CardMatchingGame *)game {
   if (!_game) {
     _game = [self createGame:self.initialCardsNumber];
@@ -84,14 +81,9 @@
   return _game;
 }
 
--(CardMatchingGame *)createGame:(NSUInteger)cardsCount {
+- (CardMatchingGame *)createGame:(NSUInteger)cardsCount {
   assert(0);
   return nil;
-}
-
-- (void)viewWillLayoutSubviews {
-  [super viewWillLayoutSubviews];
-  [self updateUI];
 }
 
 - (IBAction)touchNew:(UIButton *)sender {
@@ -126,14 +118,12 @@
   [self updateUI];
 }
 
-- (void)updateUI
-{
+- (void)updateUI {
   self.descLabel.attributedText = [self getTurnStatus:self.game.turns.lastObject];
   self.scoreLabel.text = [NSString stringWithFormat:@"Score: %ld",(long)self.game.score];
 }
 
 - (NSAttributedString*) getTurnStatus:(GameTurn *) turn {
-  
   if (!turn) {
     return [[NSMutableAttributedString alloc] initWithString:@"New game"];
   }
@@ -143,7 +133,7 @@
   bool isMatched = false;
   
   for (Card *card in turn.chosenCards) {
-    [result appendAttributedString:[self getTitleForCard:card]];//= [NSString stringWithFormat:@"%@%@ ", cardsString, card.contents];
+    [result appendAttributedString:[self getTitleForCard:card]];
     isMatched = isMatched || card.isMatched;
   }
   

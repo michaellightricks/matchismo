@@ -28,7 +28,6 @@ static const int MATCH_BONUS = 4;
 }
 
 - (NSInteger)matchCard:(Card *)card withOtherCards:(NSArray *)otherCards {
-
   NSInteger scoreDelta = 0;
 
   NSMutableArray* cards = [[NSMutableArray alloc] init];
@@ -37,6 +36,7 @@ static const int MATCH_BONUS = 4;
   [cards addObject:card];
   
   card.chosen = YES;
+  // we don't have enough cards to match yet
   if ([cards count] != (self.maxCardsNumberToMatch)) {
     return scoreDelta;
   }

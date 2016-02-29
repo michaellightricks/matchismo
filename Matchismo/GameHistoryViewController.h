@@ -3,14 +3,20 @@
 
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
+
 #import "MatchingGameViewController.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
+/// Object that manages the display of game history
+/// as a collection of game turns
 @interface GameHistoryViewController : UIViewController 
 
+/// Collection of game turns to display as history
 @property (weak, nonatomic, nullable) NSArray* turns;
-@property (weak, nonatomic, nullable) id <TurnTitleProvider> turnTitleProvider;
+
+/// Object that provides the status of the turn
+@property (weak, nonatomic, nullable) id <TurnStatusProvider> turnStatusProvider;
 
 @end
 

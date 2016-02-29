@@ -8,6 +8,8 @@
 
 #import "Card.h"
 
+NS_ASSUME_NONNULL_BEGIN
+
 @interface Card()
 
 @end
@@ -28,10 +30,11 @@
 }
 
 - (Card *) clone {
-  
   Card * result = [[Card alloc] initWithOther:self];
   
   return result;
 }
 
 @end
+
+NS_ASSUME_NONNULL_END

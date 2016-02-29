@@ -2,6 +2,7 @@
 // Created by Michael Kupchick.
 
 #import "GameHistoryViewController.h"
+
 #import "CardMatchingGame.h"
 
 NS_ASSUME_NONNULL_BEGIN
@@ -14,8 +15,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @implementation GameHistoryViewController
 
--(void)viewWillAppear:(BOOL)animated {
-  
+- (void)viewWillAppear:(BOOL)animated {
   [super viewWillAppear:animated];
   
   if (!self.turns) {
@@ -25,7 +25,7 @@ NS_ASSUME_NONNULL_BEGIN
   NSMutableAttributedString* text = [[NSMutableAttributedString alloc] init];
   
   for (GameTurn *turn in self.turns) {
-    [text appendAttributedString:[self.turnTitleProvider getTurnStatus:turn]];
+    [text appendAttributedString:[self.turnStatusProvider getTurnStatus:turn]];
     [text appendAttributedString:[[NSAttributedString alloc]
                                   initWithString:[NSString stringWithFormat:@" overall score %ld", (long)turn.score]]];
     [text appendAttributedString:[[NSAttributedString alloc] initWithString:@"\n"]];

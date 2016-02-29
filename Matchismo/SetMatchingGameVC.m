@@ -1,27 +1,25 @@
 // Copyright (c) 2016 Lightricks. All rights reserved.
 // Created by Michael Kupchick.
 
+#import "SetMatchingGameVC.h"
+
 #import <UIKit/UIKit.h>
 
-#import "SetMatchingGameVC.h"
-#import "SetMatchingGame.h"
-#import "SetCard.h"
 #import "Card.h"
+#import "SetCard.h"
 #import "SetCardView.h"
+#import "SetMatchingGame.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface SetMatchingGameVC()
-@end
-
 @implementation SetMatchingGameVC
-
-- (NSUInteger)initialCardsNumber {
-  return 12;
-}
 
 + (NSArray *)colorArray {
   return @[[UIColor redColor], [UIColor greenColor], [UIColor purpleColor]];
+}
+
+- (NSUInteger)initialCardsNumber {
+  return 12;
 }
 
 -(CardMatchingGame *)createGame:(NSUInteger)cardsCount {
@@ -29,7 +27,6 @@ NS_ASSUME_NONNULL_BEGIN
 }
 
 - (NSAttributedString *)getTitleForCard:(Card *)card {
- 
   SetCard* myCard = (SetCard *)card;
   NSString* content = [NSString stringWithFormat:@"%lu%d", (unsigned long)myCard.rank, myCard.symbol];
 
@@ -79,7 +76,6 @@ NS_ASSUME_NONNULL_BEGIN
 }
 
 - (CardView *)createCardView:(Card *)card {
-  
   SetCard *setCard = (SetCard *)card;
   
   SetCardView *result = [[SetCardView alloc] init];

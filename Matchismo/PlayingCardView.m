@@ -73,7 +73,6 @@ NS_ASSUME_NONNULL_BEGIN
 #define FACE_CARD_SCALE_FACTOR 0.2
 
 - (void)drawFaceImage:(UIImage *)image {
-  
   CGRect rect = CGRectInset(self.bounds,
               self.bounds.size.width * FACE_CARD_SCALE_FACTOR,
               self.bounds.size.height * FACE_CARD_SCALE_FACTOR);

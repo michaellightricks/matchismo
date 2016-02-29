@@ -3,9 +3,12 @@
 
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
+
 #import "MatchingGameViewController.h"
+
 NS_ASSUME_NONNULL_BEGIN
 
+/// Implementation of game view controller for playing cards game
 @interface PlayingCardsMatchingGameVC : MatchingGameViewController
 
 @end

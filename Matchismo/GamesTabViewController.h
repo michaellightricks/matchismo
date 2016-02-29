@@ -6,6 +6,7 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
+/// Tab view controller subclass passes relevant data to history view
 @interface GamesTabViewController : UITabBarController
 
 @end

@@ -8,6 +8,8 @@
 
 #import "Deck.h"
 
+NS_ASSUME_NONNULL_BEGIN
+
 @interface Deck()
 
 @property (nonatomic) NSMutableArray *cards;
@@ -16,39 +18,31 @@
 
 @implementation Deck
 
--(NSMutableArray *) cards
-{
-  if (!_cards)
-  {
+- (NSMutableArray *)cards {
+  if (!_cards){
     _cards = [[NSMutableArray alloc] init];
   }
   
   return _cards;
 }
 
--(void) addCard:(Card *)card atTop:(BOOL) atTop
-{
-  if (atTop)
-  {
+- (void)addCard:(Card *)card atTop:(BOOL)atTop {
+  if (atTop) {
     [self.cards insertObject:card atIndex:0];
   }
-  else
-  {
+  else{
     [self.cards addObject:card];
   }
 }
 
--(void) addCard:(Card *)card
-{
+-(void) addCard:(Card *)card {
   [self addCard:card atTop:NO];
 }
 
--(Card *) drawRandomCard
-{
+-(Card *) drawRandomCard {
   Card* result = NULL;
 
-  if ([self.cards count])
-  {
+  if ([self.cards count]) {
     unsigned index = arc4random() % [self.cards count];
     result  = self.cards[index];
     [self.cards removeObjectAtIndex:index];
@@ -58,3 +52,5 @@
 }
 
 @end
+
+NS_ASSUME_NONNULL_END

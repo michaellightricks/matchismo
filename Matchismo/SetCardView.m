@@ -12,7 +12,6 @@ NS_ASSUME_NONNULL_BEGIN
 #define STRIPES_NUMBER 11
 
 - (void)drawRect:(CGRect)rect {
-  
   [super drawRect:rect];
 
   float symbolWidth = [self bounds].size.width * SYMBOL_SIZE_FACTOR;
@@ -35,7 +34,6 @@ NS_ASSUME_NONNULL_BEGIN
 }
 
 - (void)translateContextAndPush:(CGPoint)translateToPoint {
-  
   CGContextRef context = UIGraphicsGetCurrentContext();
   CGContextSaveGState(context);
 
@@ -43,7 +41,6 @@ NS_ASSUME_NONNULL_BEGIN
 }
 
 - (void)drawSingleSymbolBySize:(CGSize)size {
-
   UIBezierPath* symbolPath = nil;
   CGRect rectAtOrigin = CGRectMake(0, 0, size.width, size.height);
   
@@ -83,7 +80,6 @@ NS_ASSUME_NONNULL_BEGIN
 }
 
 - (UIBezierPath *)createDiamondPathBySize:(CGSize)size {
-  
   UIBezierPath *path = [[UIBezierPath alloc] init];
   
   [path moveToPoint:CGPointMake(0, size.height / 2)];
@@ -96,7 +92,6 @@ NS_ASSUME_NONNULL_BEGIN
 }
 
 - (UIBezierPath *)createSquigglePathBySize:(CGSize)size {
-  
   UIBezierPath *path = [[UIBezierPath alloc] init];
   
   [path moveToPoint:CGPointMake(size.width*0.05, size.height*0.40)];
@@ -131,7 +126,6 @@ NS_ASSUME_NONNULL_BEGIN
 }
 
 - (UIBezierPath *)createStripesPath:(CGSize)size withCount:(int)count{
-
   UIBezierPath *path = [[UIBezierPath alloc] init];
 
   int stripesCountHalf = count / 2;

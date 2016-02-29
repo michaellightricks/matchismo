@@ -2,13 +2,14 @@
 // Created by Michael Kupchick.
 
 #import "AnimationQueue.h"
+
 #import <UIKit/UIKit.h>
 
 NS_ASSUME_NONNULL_BEGIN
 
 @interface AnimationQueue()
 
-@property (nonatomic) NSMutableArray *queue;
+@property (strong, nonatomic) NSMutableArray *queue;
 
 @end
 

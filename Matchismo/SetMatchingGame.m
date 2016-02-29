@@ -1,8 +1,8 @@
 // Copyright (c) 2016 Lightricks. All rights reserved.
 // Created by Michael Kupchick.
 
-#import "SetMatchingGame.h"
 #import "SetDeck.h"
+#import "SetMatchingGame.h"
 #import "SetMatchingStrategy.h"
 
 NS_ASSUME_NONNULL_BEGIN
