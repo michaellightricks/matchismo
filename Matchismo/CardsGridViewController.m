@@ -110,7 +110,7 @@ NS_ASSUME_NONNULL_BEGIN
   __weak CardsGridViewController *weakSelf = self;
   
   AnimationQueueItemSimple *item = [[AnimationQueueItemSimple alloc] init];
-  item.duration = 0.2;
+  item.duration = ANIMATION_DURATION_DEFAULT;
   item.delay = 0.5;
   item.animation = ^{
     for (CardView *cardView in cardViews) {
@@ -177,7 +177,7 @@ NS_ASSUME_NONNULL_BEGIN
   [cardView setFrame:self.cardViewSourceFrame];
   
   AnimationQueueItemSimple *item = [[AnimationQueueItemSimple alloc] init];
-  item.duration = 0.2;
+  item.duration = ANIMATION_DURATION_DEFAULT;
   item.beforeAnimation = ^{[weakSelf.animatedViews addObject:cardView];};
 
   item.animation = ^{cardView.frame = [weakSelf getFrameForCardIndex:index byGrid:self.grid];};
@@ -288,7 +288,7 @@ NS_ASSUME_NONNULL_BEGIN
   [self.view removeGestureRecognizer:self.panRecognizer];
   
   AnimationQueueItemSimple* animation = [[AnimationQueueItemSimple alloc] init];
-  animation.duration = 0.1;
+  animation.duration = ANIMATION_DURATION_DEFAULT;
   animation.animation = ^{
       for (CardView *cardView in self.cardViewsArray) {
         cardView.frame = [self getFrameForCardIndex:cardView.tag byGrid:self.grid];

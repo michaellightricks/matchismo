@@ -9,6 +9,8 @@ NS_ASSUME_NONNULL_BEGIN
 typedef void (^completionBlock) (BOOL finished);
 typedef void (^animationBlock) (void);
 
+#define ANIMATION_DURATION_DEFAULT 0.2
+
 @protocol AnimationItem <NSObject>
 
 - (void)runWithCompletion:(completionBlock)completion;

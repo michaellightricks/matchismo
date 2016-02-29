@@ -7,7 +7,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @implementation AnimationQueueItem
 
-- (instancetype) initWithDuration:(float)duration
+- (instancetype)initWithDuration:(float)duration
                   beforeAnimation:(animationBlock)beforeAnimation
                         animation:(animationBlock)animation
                        completion:(completionBlock)completion {

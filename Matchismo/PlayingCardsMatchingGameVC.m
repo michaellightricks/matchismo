@@ -65,7 +65,7 @@ static const int MAX_MATCH_NUMBERS[] = {2, 3};
 
   AnimationQueueItemTransition *transition = [[AnimationQueueItemTransition alloc] init];
   transition.view = cardView;
-  transition.duration = 0.2;
+  transition.duration = ANIMATION_DURATION_DEFAULT;
   transition.beforeAnimation = nil;
   transition.animation = ^{cardView.faceUp = card.isChosen;};
   transition.completion = nil;
