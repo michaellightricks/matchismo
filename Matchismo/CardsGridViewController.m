@@ -19,6 +19,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (strong, nonatomic) UIPinchGestureRecognizer *pinchRecognizer;
 @property (strong, nonatomic) UIPanGestureRecognizer *panRecognizer;
 @property (nonatomic) BOOL attachStarted;
+@property (strong, nonatomic) NSMutableArray *cardGestureRecognizers;
 
 @end
 
@@ -47,7 +48,11 @@ NS_ASSUME_NONNULL_BEGIN
 
 - (void)addCardView:(CardView *)cardView {
   [self.cardViewsArray addObject:cardView];
-  [cardView addTarget:self action:@selector(touchCard:) forControlEvents:UIControlEventTouchUpInside];
+
+  UITapGestureRecognizer *tapRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(touchCard:)];
+  [cardView addGestureRecognizer:tapRecognizer];
+  [self.cardGestureRecognizers addObject:tapRecognizer];
+
   [self.view addSubview:cardView];
   
   if (_grid) {
@@ -55,11 +60,13 @@ NS_ASSUME_NONNULL_BEGIN
   }
 }
 
-- (IBAction)touchCard:(CardView *)sender {
+- (void)touchCard:(UITapGestureRecognizer *)recognizer {
   if (self.attachStarted) {
     return;
   }
-  
+
+  CardView *sender = (CardView *)recognizer.view;
+
   self.onTouchCard(sender);
 }
 
@@ -87,7 +94,10 @@ NS_ASSUME_NONNULL_BEGIN
     
     CardView *cardView = self.cardViewsArray[integerIdx];
     
-    [cardView removeTarget:self action:@selector(touchCard:) forControlEvents:UIControlEventTouchUpInside];
+    UITapGestureRecognizer *recognizer = self.cardGestureRecognizers[integerIdx];
+    [self.cardGestureRecognizers removeObjectAtIndex:integerIdx];
+    [cardView removeGestureRecognizer:recognizer];
+    
     [removed addObject:[self.cardViewsArray objectAtIndex:integerIdx]];
     [self.cardViewsArray removeObjectAtIndex:integerIdx];
   }
@@ -233,8 +243,19 @@ NS_ASSUME_NONNULL_BEGIN
   return _pinchRecognizer;
 }
 
+- (NSMutableArray *)cardGestureRecognizers {
+  if (_cardGestureRecognizers) {
+    _cardGestureRecognizers = [[NSMutableArray alloc] init];
+  }
+  
+  return _cardGestureRecognizers;
+}
+
 - (void)onPinch:(UIPinchGestureRecognizer *)recognizer {
-  NSLog(@"%f", recognizer.scale);
+  if (recognizer.state != UIGestureRecognizerStateEnded) {
+    return;
+  }
+    
   if (recognizer.scale < 0.5 && !self.attachStarted) {
     CGPoint location = [recognizer locationInView:self.view];
     [self startAttachMode:location];

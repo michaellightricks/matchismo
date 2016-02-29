@@ -7,7 +7,7 @@
 NS_ASSUME_NONNULL_BEGIN
 
 /// View that displays the basic shape of rounded card
-@interface CardView : UIControl
+@interface CardView : UIView
 
 /// returns scale factor to scale the
 /// values according to view size

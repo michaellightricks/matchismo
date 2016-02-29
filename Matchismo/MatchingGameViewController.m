@@ -13,7 +13,6 @@
 #import "AnimationQueue.h"
 #import "AnimationQueueItem.h"
 
-
 @interface MatchingGameViewController ()
 
 @property (weak, nonatomic) IBOutlet UILabel *scoreLabel;

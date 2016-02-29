@@ -62,7 +62,6 @@ static const int COST_TO_CHOSE = 1;
       if (card)  {
         card.index = i;
         [self.cards addObject:card];
-        NSLog(@"%@", card.contents);
       }
       else {
         self = nil;
